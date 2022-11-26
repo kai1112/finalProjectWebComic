@@ -4,10 +4,7 @@
             <img src='<%=m?.avatar%>' alt="">
             <%if(listChapter[index][0]?.mangaID===m.id){%>
                 <div class="more-info">
-                    <div class="time">
-                        <%=Math.ceil((d - listChapter[index][listChapter[index].length-1]?.createdAt)/3600000) %> giờ
-                            trước
-                    </div>
+
                 </div>
                 <%}%>
         </a>
