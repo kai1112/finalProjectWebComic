@@ -34,14 +34,14 @@
                     <%history.map((h)=>{%>
                         <li class="card-item">
                             <a>
-                                <img src="<%=h.mangaID.avatar%>" alt="" onclick="view('<%=h.mangaID.slug%>')">
+                                <img src="<%=h.mangaID?.avatar%>" alt="" onclick="view('<%=h.mangaID?.slug%>')">
                                 <div class="more-info">
                                     <div class="unfollow" onclick="unhistory('<%=h._id%>')"><i
                                             class="fa-solid fa-circle-xmark"></i></div>
                                 </div>
                             </a>
                             <div class="bookname">
-                                <%=h.mangaID.name%>
+                                <%=h.mangaID?.name%>
                             </div>
                             <!-- <div class="lastest-chapter">Chapter 123</div> -->
                         </li>

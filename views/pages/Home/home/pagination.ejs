@@ -1,7 +1,7 @@
 <% listManga.map((m, index)=>{%>
     <li class="card-item">
-        <a onclick="viewDetails('<%=m.slug%>')">
-            <img src='<%=m.avatar%>' alt="">
+        <a onclick="viewDetails('<%=m?.slug%>')">
+            <img src='<%=m?.avatar%>' alt="">
             <%if(listChapter[index][0]?.mangaID===m.id){%>
                 <div class="more-info">
                     <div class="time">
@@ -11,14 +11,14 @@
                 </div>
                 <%}%>
         </a>
-        <div class="bookname" onclick="viewDetails('<%=m.slug%>')">
-            <%=m.name%>
+        <div class="bookname" onclick="viewDetails('<%=m?.slug%>')">
+            <%=m?.name%>
         </div>
         <div>
-            <%if(listChapter[index][0]?.mangaID===m.id){%>
+            <%if(listChapter[index][0]?.mangaID===m?.id){%>
                 <div class="lastest-chapter" class="lastest-chapter"
                     onclick="viewChapter1('<%=listChapter[index][listChapter[index].length-1]?.chap%>', '<%=m?.slug%>','<%=m?.price%>', '<%=userDetail?.monney%>')">
-                    Chapter <%=listChapter[index][listChapter[index].length-1]?.chap%>
+                    Chapter <%=listChapter[index][listChapter[index]?.length-1]?.chap%>
                 </div>
                 <%}%>
         </div>

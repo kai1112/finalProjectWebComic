@@ -34,14 +34,14 @@
                     <%follows.map((f)=>{%>
                         <li class="card-item">
                             <a>
-                                <img src="<%=f.mangaID.avatar%>" alt="" onclick="viewDetails('<%=f.mangaID.slug%>')">
+                                <img src="<%=f.mangaID?.avatar%>" alt="" onclick="viewDetails('<%=f.mangaID?.slug%>')">
                                 <div class="more-info">
                                     <div class="unfollow" onclick="unfollow('<%=f._id%>')"><i
                                             class="fa-solid fa-circle-xmark"></i></div>
                                 </div>
                             </a>
                             <div class="bookname">
-                                <%=f.mangaID.name%>
+                                <%=f.mangaID?.name%>
                             </div>
                             <!-- <div class="lastest-chapter">Chapter 123</div> -->
                         </li>

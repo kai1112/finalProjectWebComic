@@ -34,7 +34,7 @@
                         <%if(chapter[1]=="" ){%>
                             <%}else{%>
                                 <img src='<%=manga[1]?.avatar%>' alt="">
-                                <div class="cover_chapter">Chương <%=chapter[1][0]?.chap%>
+                                <div class="cover_chapter">Chương <%=chapter[1]?.length%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -45,7 +45,7 @@
                         <img src='<%=manga[2]?.avatar%>' alt="">
                         <%if(chapter[2]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[2][0]?.chap%>
+                                <div class="cover_chapter">Chương <%=chapter[2]?.length%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -59,7 +59,7 @@
                             <div class="cover_chapter"></div>
                             <%}else{%>
                                 <img src='<%=manga[0]?.avatar%>' alt="">
-                                <div class="cover_chapter">Chương <%=chapter[0][0]?.chap%>
+                                <div class="cover_chapter">Chương <%=chapter[0]?.length%>
                                 </div>
                                 <div class="cover_shadow_mid">
                                     <%= manga[0]?.name%>
@@ -72,7 +72,7 @@
                         <img src='<%=manga[3]?.avatar%>' alt="">
                         <%if(chapter[3]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[3][0]?.chap%>
+                                <div class="cover_chapter">Chương <%=chapter[3]?.length%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -83,7 +83,7 @@
                         <img src='<%=manga[4]?.avatar%>' alt="">
                         <%if(chapter[4]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[4][0]?.chap%>
+                                <div class="cover_chapter">Chương <%=chapter[4]?.length%>
                                 </div>
                                 <%}%>
 
@@ -99,20 +99,20 @@
                     <div class="suggest-bar">
                         <ul>
                             <% muaNhieu.map((m, index)=>{%>
-                                <li class="card-item" onclick="viewDetails('<%=m.slug%>')">
+                                <li class="card-item" onclick="viewDetails('<%=m?.slug%>')">
                                     <a>
-                                        <img src='<%=m.avatar%>' alt="">
+                                        <img src='<%=m?.avatar%>' alt="">
                                         <div class="more-info">
                                             <div class="hot">TOP <%= index + 1%>
                                             </div>
                                         </div>
                                     </a>
                                     <div class="bookname">
-                                        <%=m.name%>
+                                        <%=m?.name%>
                                     </div>
                                     <%if(chapter[index]?.mangaID===m.id){%>
                                         <div class="lastest-chapter">
-                                            Chapter <%=chapter[index][chapter[index].length-1]?.chap%>
+                                            Chapter <%=chapter[index][chapter[index]?.length-1]?.chap%>
                                         </div>
                                         <%}%>
                                 </li>
@@ -159,7 +159,7 @@
 
                                             </div>
                                             <i class="fa-solid fa-thumbs-up like-total">
-                                                <%=m.reaction?.length%>
+                                                <%=m?.reaction?.length%>
                                             </i>
                                             <br>
                                             <%})%>
