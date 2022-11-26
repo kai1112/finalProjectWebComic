@@ -26,6 +26,27 @@
                 <button class="pagination-btn" onclick="nextPages('<%=1%>')">
                     <%=1%>
                 </button>
-                <%}else{ <%}%>
+                <%}else{ if(1*page +3> total -1){%>
+                    </button> <button class="pagination-btn" onclick="nextPages('<%=1*total -3%>')">
+                        <%=1*total-3%>
+                            <button class="pagination-btn" onclick="nextPages('<%=1*total-2%>')">
+                                <%=1*total-2%>
+                            </button> <button class="pagination-btn" onclick="nextPages('<%=1*total-1%>')">
+                                <%=1*total-1%>
+
+                                    <%}else{%>
+                            </button> <button class="pagination-btn" onclick="nextPages('<%=1*page+1%>')">
+                                <%=1*page + 1%>
+
+                            </button>
+                            <button class="pagination-btn" onclick="nextPages('<%=1*page+2%>')">
+                                <%=1*page + 2%>
+                            </button>
+                            <%}%>
+
+                                <button class="pagination-btn" onclick="nextPages('<%=1*total%>')">
+                                    <%=1*total%>
+                                </button>
+                                <%}%>
 
         </div>
