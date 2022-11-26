@@ -2,8 +2,7 @@ const UserModel = require('../models/user.model')
 const MangaModel = require('../models/manga.model')
 const Reviewmanga = require('../models/reviewManga')
 const CategoryModel = require('../models/category.model')
-const slug = require('slugify')
-const { refeshToken } = require('../service/refeshToken')
+const slug = require('slugify');
 const { header } = require('../service/headerData')
 module.exports.viewCreateCategory = async (req, res) => {
     try {
@@ -27,7 +26,7 @@ module.exports.createCategory = async (req, res) => {
             await CategoryModel.create({
                 name: req.body.category,
                 description: req.body.description,
-                slug: slugify(req.body.name)
+                slug: slug(req.body.category)
             })
             res.json({ status: 200 })
         }
