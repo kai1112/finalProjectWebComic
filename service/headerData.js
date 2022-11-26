@@ -23,7 +23,7 @@ async function header(req, res) {
             },
             {
                 $sort: {
-                    count: -1
+                    count: 1
                 }
             }
         ])
