@@ -21,11 +21,6 @@ async function header(req, res) {
                     count: { $sum: {} }
                 }
             },
-            {
-                $sort: {
-                    count: 1
-                }
-            }
         ])
         let user = await UserModel.populate(userBuyed, { path: "_id" })
         // console.log(12, data);
