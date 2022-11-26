@@ -1,5 +1,5 @@
 const CommentModel = require('../models/comment.model')
-const { refeshToken } = require('../service/refeshToken')
+const UserModel = require('../models/user.model')
 module.exports.createComment = async (req, res) => {
     try {
         // console.log(5, req.file);
@@ -87,10 +87,11 @@ module.exports.updateComment = async (req, res) => {
 
 module.exports.deleteComment = async (req, res) => {
     try {
-        let comment = await CommentModel.findOne({ _id: req.body.id });
-        // console.log(comment);
-        if (comment.audio) {
+        // console.log('a');
 
+        // console.log('a');
+        let comment = await CommentModel.findOne({ _id: req.body.id });
+        if (comment.audio) {
             fs.unlinkSync(comment.audio);
         }
         await CommentModel.findByIdAndDelete(comment._id);

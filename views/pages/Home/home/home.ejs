@@ -26,146 +26,149 @@
     <!-- menu -->
     <!-- main -->
     <div class="main-container">
-        <div class="banner">
-            <div class="banner_left">
-                <a onclick="viewDetails('<%=manga[1]?.slug%>')">
-                    <img src='<%=manga[1]?.avatar%>' alt="">
-                    <%if(chapter[1]=="" ){%>
-                        <%}else{%>
-                            <img src='<%=manga[1]?.avatar%>' alt="">
-                            <div class="cover_chapter">Chương <%=chapter[1][0]?.chap%>
-                            </div>
-                            <%}%>
-                                <div class="cover_shadow">
-                                    <%= manga[1]?.name%>
-                                </div>
-                </a>
-                <a onclick="viewDetails('<%=manga[2]?.slug%>')">
-                    <img src='<%=manga[2]?.avatar%>' alt="">
-                    <%if(chapter[2]=="" ){%>
-                        <%}else{%>
-                            <div class="cover_chapter">Chương <%=chapter[2][0]?.chap%>
-                            </div>
-                            <%}%>
-                                <div class="cover_shadow">
-                                    <%= manga[2]?.name%>T
-                                </div>
-                </a>
-            </div>
-            <div class="banner_mid">
-                <a onclick="viewDetails('<%=manga[0]?.slug%>')">
-                    <%if(chapter[0]=="" ){%>
-                        <div class="cover_chapter"></div>
-                        <%}else{%>
-                            <img src='<%=manga[0]?.avatar%>' alt="">
-                            <div class="cover_chapter">Chương <%=chapter[0][0]?.chap%>
-                            </div>
-                            <div class="cover_shadow_mid">
-                                <%= manga[0]?.name%>
-                            </div>
-                            <%}%>
-                </a>
-            </div>
-            <div class="banner_right">
-                <a onclick="viewDetails('<%=manga[3]?.slug%>')">
-                    <img src='<%=manga[3]?.avatar%>' alt="">
-                    <%if(chapter[3]=="" ){%>
-                        <%}else{%>
-                            <div class="cover_chapter">Chương <%=chapter[3][0]?.chap%>
-                            </div>
-                            <%}%>
-                                <div class="cover_shadow">
-                                    <%= manga[3]?.name%>
-                                </div>
-                </a>
-                <a onclick="viewDetails('<%=manga[4]?.slug%>')">
-                    <img src='<%=manga[4]?.avatar%>' alt="">
-                    <%if(chapter[4]=="" ){%>
-                        <%}else{%>
-                            <div class="cover_chapter">Chương <%=chapter[4][0]?.chap%>
-                            </div>
-                            <%}%>
-
-                                <div class="cover_shadow">
-                                    <%= manga[4]?.name%>
-                                </div>
-                </a>
-            </div>
-        </div>
-        <div class="suggest">
-            <h2><i class="fa-solid fa-star"></i> Truyện được mua nhiều nhất</h2>
-            <div class="suggest-bar">
-                <ul>
-                    <% muaNhieu.map((m, index)=>{%>
-                        <li class="card-item" onclick="viewDetails('<%=m.slug%>')">
-                            <a>
-                                <img src='<%=m.avatar%>' alt="">
-                                <div class="more-info">
-                                    <div class="hot">TOP <%= index + 1%>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="bookname">
-                                <%=m.name%>
-                            </div>
-                            <%if(chapter[index]?.mangaID===m.id){%>
-                                <div class="lastest-chapter">
-                                    Chapter <%=chapter[index][chapter[index].length-1]?.chap%>
+        <%if(manga.length>= 5){%>
+            <div class="banner">
+                <div class="banner_left">
+                    <a onclick="viewDetails('<%=manga[1]?.slug%>')">
+                        <img src='<%=manga[1]?.avatar%>' alt="">
+                        <%if(chapter[1]=="" ){%>
+                            <%}else{%>
+                                <img src='<%=manga[1]?.avatar%>' alt="">
+                                <div class="cover_chapter">Chương <%=chapter[1][0]?.chap%>
                                 </div>
                                 <%}%>
-                        </li>
-                        <%})%>
-                </ul>
+                                    <div class="cover_shadow">
+                                        <%= manga[1]?.name%>
+                                    </div>
+                    </a>
+                    <a onclick="viewDetails('<%=manga[2]?.slug%>')">
+                        <img src='<%=manga[2]?.avatar%>' alt="">
+                        <%if(chapter[2]=="" ){%>
+                            <%}else{%>
+                                <div class="cover_chapter">Chương <%=chapter[2][0]?.chap%>
+                                </div>
+                                <%}%>
+                                    <div class="cover_shadow">
+                                        <%= manga[2]?.name%>T
+                                    </div>
+                    </a>
+                </div>
+                <div class="banner_mid">
+                    <a onclick="viewDetails('<%=manga[0]?.slug%>')">
+                        <%if(chapter[0]=="" ){%>
+                            <div class="cover_chapter"></div>
+                            <%}else{%>
+                                <img src='<%=manga[0]?.avatar%>' alt="">
+                                <div class="cover_chapter">Chương <%=chapter[0][0]?.chap%>
+                                </div>
+                                <div class="cover_shadow_mid">
+                                    <%= manga[0]?.name%>
+                                </div>
+                                <%}%>
+                    </a>
+                </div>
+                <div class="banner_right">
+                    <a onclick="viewDetails('<%=manga[3]?.slug%>')">
+                        <img src='<%=manga[3]?.avatar%>' alt="">
+                        <%if(chapter[3]=="" ){%>
+                            <%}else{%>
+                                <div class="cover_chapter">Chương <%=chapter[3][0]?.chap%>
+                                </div>
+                                <%}%>
+                                    <div class="cover_shadow">
+                                        <%= manga[3]?.name%>
+                                    </div>
+                    </a>
+                    <a onclick="viewDetails('<%=manga[4]?.slug%>')">
+                        <img src='<%=manga[4]?.avatar%>' alt="">
+                        <%if(chapter[4]=="" ){%>
+                            <%}else{%>
+                                <div class="cover_chapter">Chương <%=chapter[4][0]?.chap%>
+                                </div>
+                                <%}%>
+
+                                    <div class="cover_shadow">
+                                        <%= manga[4]?.name%>
+                                    </div>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="main">
-            <h2><i class="fa-solid fa-cloud-arrow-down"></i> Truyện mới cập nhật</h2>
-            <div class="main-content">
-                <ul class="list-item">
-                    <%- include('./pagination') %>
-
-                </ul>
-                <div class="comment-zone">
-                    <div class="commentMainLayout">
-                        <div class="allCommentContainer">
-                            <div class="showComment">
-                                <%comment.map((m, index)=>{%>
-                                    <div class="showComment__info">
-                                        <a class="showComment__info--avatar"><img src="<%=m?.userID?.avatar%>"
-                                                alt=""></a>
-                                        <div class="showComment__info--nameAndTime">
-                                            <a>
-                                                <%=m?.userID?.username%>
-                                            </a>
-                                            <!-- <p>Publish</p> -->
+            <%}else{}%>
+                <div class="suggest">
+                    <h2><i class="fa-solid fa-star"></i> Truyện được mua nhiều nhất</h2>
+                    <div class="suggest-bar">
+                        <ul>
+                            <% muaNhieu.map((m, index)=>{%>
+                                <li class="card-item" onclick="viewDetails('<%=m.slug%>')">
+                                    <a>
+                                        <img src='<%=m.avatar%>' alt="">
+                                        <div class="more-info">
+                                            <div class="hot">TOP <%= index + 1%>
+                                            </div>
                                         </div>
+                                    </a>
+                                    <div class="bookname">
+                                        <%=m.name%>
                                     </div>
-                                    <div class="showComment__content">
-                                        <%=m?.title%>
-                                            <p>
-                                                <%if(m?.audio.split(".").includes("jpg", "png" )){%>
-                                                    <img src="<%= m?.audio  %> " alt="" width="100px">
-                                                    <%}else if(m?.audio.split(".").includes("m4a",'mp3','WMA' )){%>
-                                                        <audio controls>
-                                                            <source src="<%= m?.audio  %> " type="audio/ogg">
-                                                            <source src="<%= m?.audio  %> " type="audio/ogg">
-                                                        </audio>
-                                                        <%}else{%>
-                                                            <%}%>
-                                            </p>
+                                    <%if(chapter[index]?.mangaID===m.id){%>
+                                        <div class="lastest-chapter">
+                                            Chapter <%=chapter[index][chapter[index].length-1]?.chap%>
+                                        </div>
+                                        <%}%>
+                                </li>
+                                <%})%>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main">
+                    <h2><i class="fa-solid fa-cloud-arrow-down"></i> Truyện mới cập nhật</h2>
+                    <div class="main-content">
+                        <ul class="list-item">
+                            <%- include('./pagination') %>
 
+                        </ul>
+                        <div class="comment-zone">
+                            <div class="commentMainLayout">
+                                <div class="allCommentContainer">
+                                    <div class="showComment">
+                                        <%comment.map((m, index)=>{%>
+                                            <div class="showComment__info">
+                                                <a class="showComment__info--avatar"><img src="<%=m?.userID?.avatar%>"
+                                                        alt=""></a>
+                                                <div class="showComment__info--nameAndTime">
+                                                    <a>
+                                                        <%=m?.userID?.username%>
+                                                    </a>
+                                                    <!-- <p>Publish</p> -->
+                                                </div>
+                                            </div>
+                                            <div class="showComment__content">
+                                                <%=m?.title%>
+                                                    <p>
+                                                        <%if(m?.audio.split(".").includes("jpg", "png" )){%>
+                                                            <img src="<%= m?.audio  %> " alt="" width="100px">
+                                                            <%}else if(m?.audio.split(".").includes("m4a",'mp3','WMA'
+                                                                )){%>
+                                                                <audio controls>
+                                                                    <source src="<%= m?.audio  %> " type="audio/ogg">
+                                                                    <source src="<%= m?.audio  %> " type="audio/ogg">
+                                                                </audio>
+                                                                <%}else{%>
+                                                                    <%}%>
+                                                    </p>
+
+                                            </div>
+                                            <i class="fa-solid fa-thumbs-up like-total">
+                                                <%=m.reaction?.length%>
+                                            </i>
+                                            <br>
+                                            <%})%>
                                     </div>
-                                    <i class="fa-solid fa-thumbs-up like-total">
-                                        <%=m.reaction?.length%>
-                                    </i>
-                                    <br>
-                                    <%})%>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
     <!-- main -->
     <!-- footer -->

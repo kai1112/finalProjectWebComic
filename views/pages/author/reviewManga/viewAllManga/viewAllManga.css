@@ -1,11 +1,12 @@
 .viewAllMangaAuthorPost {
-    display: flex;
+    display: flex !important;
     gap: 20px;
 }
 
 .mangaAuthor-post {
     flex: 1
 }
-.createBtn{
+
+.createBtn {
     margin: 1rem 0;
 }

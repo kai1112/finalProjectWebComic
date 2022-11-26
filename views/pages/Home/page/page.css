@@ -78,6 +78,10 @@ body {
     cursor: pointer;
 }
 
+.report-component {
+    display: none;
+}
+
 .search-result {
     position: absolute;
     display: none;

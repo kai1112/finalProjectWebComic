@@ -332,7 +332,7 @@ async function deleteComment(id, userID, userIDD) {
             })
             console.log(data1);
             if (data1.status == 200) {
-                window.location.reload()
+                window.location.reload();
             }
         } else {
             alert('ban khong phai chu nhan comment')
