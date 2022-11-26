@@ -18,7 +18,7 @@ async function header(req, res) {
             {
                 $group: {
                     "_id": "$userID",
-                    count: { $count: {} }
+                    count: { $sum: {} }
                 }
             },
             {

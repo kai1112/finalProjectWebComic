@@ -55,19 +55,20 @@
                         <span>Thể loại <i class="fa fa-caret-down"></i></span>
                         <div class="submenu cat-submenu">
                             <% category.map((category)=>{%>
-                                <a onclick="findCategory('<%=category.id%>')">
-                                    <%=category.name%>
+                                <a onclick="findCategory('<%=category?.id%>')">
+                                    <%=category?.name%>
                                 </a>
                                 <% })%>
                         </div>
                     </li>
                     <li class="chart-hover">
                         <span>Xếp hạng <i class="fa fa-caret-down"></i></span>
-                        <div class="submenu chart-submenu">
-                            <% user.map((user)=>{%>
 
-                                <a href=""><img src="<%=user._id.avatar%>" alt="">
-                                    <%=user._id.username%>
+                        <div class="submenu chart-submenu">
+                            <% user?.map((user)=>{%>
+
+                                <a href=""><img src="<%=user?._id?.avatar%>" alt="">
+                                    <%=user?._id?.username%>
                                 </a>
                                 <% })%>
                         </div>
@@ -125,9 +126,9 @@
                 <li class="category-click ">
                     <span>Thể loại <i class="fa fa-caret-down"></i></span>
                     <div class="submenu_mobile cat-submenu-mobile  hidden">
-                        <% category.map((category)=>{%>
-                            <a onclick="findCategory('<%=category.id%>')">
-                                <%=category.name%>
+                        <% category?.map((category)=>{%>
+                            <a onclick="findCategory('<%=category?.id%>')">
+                                <%=category?.name%>
                             </a>
                             <% })%>
                     </div>
@@ -136,7 +137,7 @@
                     <span>Xếp hạng <i class="fa fa-caret-down"></i></span>
                     <div class="submenu_mobile chart-submenu-mobile  hidden">
                         <% user.map((user)=>{%>
-                            <a href=""><img src="<%=user._id.avatar%>" alt="">
+                            <a href=""><img src="<%=user?._id?.avatar%>" alt="">
                                 <%=user._id.username%>
                             </a>
                             <% })%>

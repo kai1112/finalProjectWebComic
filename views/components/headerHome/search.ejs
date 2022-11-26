@@ -1,14 +1,14 @@
-<%manga.map((m , index)=>{%>
+<%manga?.map((m , index)=>{%>
     <a class="search-item" href="" index="<%= index%>">
         <div class="search-item-img">
-            <img src="<%=m.avatar%>" alt="">
+            <img src="<%=m?.avatar%>" alt="">
         </div>
         <div class="search-item-info">
             <b>
-                <%=m.name%>
+                <%=m?.name%>
             </b>
             <p>
-                <%=m.author.username%>
+                <%=m?.author?.username%>
             </p>
         </div>
     </a>
