@@ -51,7 +51,7 @@ module.exports.viewAllFollows = async (req, res) => {
         // let userDetail = await UserModel.findOne({ _id: req.user._id })
         let category = await CategoryModel.find().sort({ name: 'asc' })
         // let user = await UserModel.find().sort({ buyed: 'desc' }).limit(10)
-        console.log(54);
+        // console.log(54);
         let follows = await Follow.find({ userID: req.user._id }).populate('mangaID')
         if (!follows) {
             // console.log(40, follows);
