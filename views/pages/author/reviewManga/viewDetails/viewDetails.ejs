@@ -1,0 +1,63 @@
+<div class="details-manga">
+  <div class="adminMenu">
+    <%- include('../../../../components/authorMenu/authorMenu.ejs') %>
+  </div>
+
+  <div class="details-manga-info">
+    <div class="post-info">
+      <div class="left-info">
+        <h4>
+          Name: <%= manga.name %>
+        </h4>
+        <p>
+          Category: <% manga.category.forEach(cat=>{ %>
+            <%= cat.name %>
+              <% }) %>
+        </p>
+        <h5>
+          Author: <%= manga.author.username %>
+        </h5>
+        <p>
+          Description: <%= manga.description %>
+        </p>
+      </div>
+      <div class="right-info">
+        <img src="<%= manga.avatar %>" alt="avatar" width="50px" />
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="createChapter('<%= manga._id %>')">create chapter</button>
+
+    <!-- chapter -->
+    <h1>chapter</h1>
+    <table class="table table-stripped">
+      <thead class="thead-dark">
+        <th>#</th>
+        <th>Chapter Name</th>
+        <th>Tools</th>
+      </thead>
+      <tbody>
+        <% chapter.map((chapter, index)=>{%>
+          <tr>
+            <td>
+              <%= index+1%>
+            </td>
+            <td><a onclick="viewDetailChapter('<%= chapter._id %>')"> Chapter: <%= chapter.title %></a></td>
+            <td>
+              <button class="btn btn-warning" onclick="edichapter('<%= chapter._id %>', '<%= chapter.stautus %>')">edit
+                chapter</button>
+              <button class="btn btn-danger" onclick="deleteChapter('<%= chapter._id %>')">delete chapter</button>
+            </td>
+          </tr>
+          <!-- <td>chap <%= chapter.content %></td> -->
+          <%})%>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="/views/pages/author/reviewManga/viewDetails/viewDetails.css" />
+<script src="/views/pages/author/reviewManga/viewDetails/viewDetails.js"></script>

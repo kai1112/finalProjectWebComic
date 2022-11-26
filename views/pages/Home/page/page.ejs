@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/pages/Home/page/page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- menu -->
+    <header>
+
+        <% if(userDetails){%>
+            <%- include('../../../components/login_header/login_header') %>
+                <%}else{%>
+                    <!-- menu -->
+                    <%- include('../../../components/headerHome/header') %>
+                        <!-- mobile -->
+                        <%- include('../../../components/headerHome/headerMobile') %>
+                            <% } %>
+    </header>
+    <!-- menu -->
+    <!-- main -->
+    <a href="" class="large-background">
+        <img src="<%=mangaDetail.backgroud_avatar%>" alt="" srcset="">
+    </a>
+    <div class="main-container">
+        <div class="item-container">
+            <div class="item-thumbnail">
+                <img src="<%=mangaDetail.avatar%>" alt="">
+            </div>
+            <div class="item-info">
+                <p class="item-title">
+                    <%=mangaDetail.name%>
+                </p>
+                <div class="item-cat">
+                    <% mangaDetail.category.map((c)=>{%>
+                        <a onclick="findbyCategory('<%=c.id%>')">
+                            <%= c.name %>
+                        </a>
+                        <%})%>
+                </div>
+                <div class="other-info">
+                    <div class="total-chapter">
+                        <p class="info-top">
+                            <%= chapter.length%>
+                        </p>
+                        <p class="info-bottom">Chương</p>
+                    </div>
+                    <div class="total-read">
+                        <p class="info-top">
+                            <%= mangaDetail.views%>
+                        </p>
+                        <p class="info-bottom">Lượt đọc</p>
+                    </div>
+                    <div class="total-read">
+                        <p class="info-top">
+                            <%= mangaDetail.price%>
+                        </p>
+                        <p class="info-bottom">Price</p>
+                    </div>
+                </div>
+                <div class="read-and-save">
+                    <button class="read"
+                        onclick="readFirst('<%= chapter[0]?.chap%>','<%=mangaDetail?.price%>', '<%=userDetails?.monney%>', '<%=checked%>')"><i
+                            class="fa-solid fa-glasses"></i>
+                        Đọc truyện</button>
+                    <button class="save" onclick="followManga('<%=mangaDetail._id%>')"><i
+                            class="fa-regular fa-bookmark"></i>
+                        <% if(follow){%>
+                            <%= follow.status %>
+                                <%}else{%>
+                                    <span>Follow</span>
+                                    <%}%>
+                    </button>
+                    <% if(mangaDetail.price> 0){%>
+                        <button class="read" onclick="review('<%= chapter[0]?.chap%>')"><i
+                                class="fa-solid fa-glasses"></i>
+                            Review truyện</button>
+                        <%}%>
+                </div>
+            </div>
+        </div>
+        <div class="item-feature">
+            <div class="feature-bar">
+                <a id="feature-bar-des" class="nav-active">Giới thiệu</a>
+                <a id="feature-bar-chapter">Danh sách chương <span class="total">
+                        <%= chapter.length%>
+                    </span></a>
+                <a id="feature-bar-comment">Bình luận <span class="total">
+                        <%=comments.length%>
+                    </span></a>
+                <a id="feature-bar-follow">Hâm mộ</a>
+                <a id="feature-bar-report">report <span class="total">
+                    </span></a>
+            </div>
+            <div class="feature-content">
+                <!-- giới thiệu component -->
+                <div class="des-component ">
+                    <div class="item-des">
+                        <p class="item-des-content">
+                            <%= manga.description %>
+                        </p>
+
+                        <table class="des-detail">
+                            <tr>
+                                <th>Cảm xúc</th>
+                                <td><button class="likeBtn"
+                                        onclick="mangaLike('<%=mangaDetail?._id%>', '<%=userDetails?.id%>')">
+                                        <i class="fa-solid fa-thumbs-up">
+                                            <%=mangaDetail.like.length%>
+                                        </i></td>
+                                </button>
+                            </tr>
+                            <tr>
+                                <th>New Chap</th>
+                                <td><a
+                                        onclick="viewChapter('<%=chapter[chapter.length-1]?.chap%> ', '<%=mangaDetail?.price%>', '<%=userDetail?.monney%>', '<%=checked%>')">
+                                        <%= chapter[chapter.length-1]?.title %>
+                                    </a></td>
+                                <td>
+                                    <%= chapter[chapter.length-1]?.createdAt?.toLocaleString()%>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- chương component -->
+                <div class="chapterList-component ">
+                    <!-- <p>a</p> -->
+                    <% chapter?.map((c)=>{%>
+                        <a
+                            onclick="viewChapter('<%=c.chap%>','<%=mangaDetail?.price%>', '<%=userDetail?.monney%>', '<%=checked%>')"><span>Chap
+                                <%=c.chap%>: <%=c.title%>
+                            </span><span>
+                                <%=c.createdAt?.toLocaleString()%>
+                            </span></a>
+                        <%})%>
+                </div>
+                <!-- bình luận component -->
+                <div class="comment-component ">
+                    <div class="comment-container">
+                        <div class="comment-top-feature">
+                            <h2>
+                                <%=comment?.length%> bình luận của bạn
+                            </h2>
+                            <form enctype="multipart/form-data" class="addfile-form">
+                                <label class="add-file-cover" for="addfile">Add images or files</label>
+                                <input type="file" name="addfile" id="addfile" />
+                            </form>
+                        </div>
+                        <div class="your-comment">
+                            <textarea name="" id="contentComment" placeholder="Bình luận của bạn"></textarea>
+                            <button class="send-btn" onclick="comment('<%=userDetail?._id%>')">
+                                <i class="fas fa-paper-plane    "></i>
+                            </button>
+                        </div>
+                        <div class="comment">
+                            <%- include('./comment.ejs') %>
+                        </div>
+                    </div>
+                    <div class="preview-img">
+                        <img class="preview-image" src="" alt="">
+                    </div>
+                </div>
+                <!-- follow-component -->
+                <div class="follow-component">
+                    <div class="follow-list">
+                        <% followers.map((f, index)=>{%>
+                            <div class="follow-item">
+                                <span class="rank">
+                                    <%= index + 1%>
+                                </span>
+                                <a href="" class="follow-item-info">
+                                    <img src="<%= f.userID?.avatar%>" alt="">
+                                    <div class="follow-item-other-info">
+                                        <p class="item-name">
+                                            <%= f.userID?.username%>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <%})%>
+                    </div>
+                </div>
+                <!-- report -->
+                <div class="report-component ">
+                    <div class="comment-container">
+                        <div class="your-comment">
+                            <textarea name="" id="report" placeholder="Bình luận của bạn"></textarea>
+                            <button class="send-btn" onclick="report('<%=userDetail?._id%>')">
+                                <i class="fas fa-paper-plane    "></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main -->
+
+    <!-- footer -->
+    <!-- footer -->
+    <%- include('../../../components/footer') %>
+        <!-- footer -->
+        <!-- footer -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/views/pages/Home/page/page.js"></script>
+<script src="/views/components/headerHome/header.js"></script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/views/components/register/register.css">
+</head>
+<title>Document</title>
+</head>
+
+<body>
+    <!-- <form action="" enctype="multipart/form-data"> -->
+    <div class="register_form">
+        <div class="unsee"></div>
+        <div class="unsee"></div>
+        <div class="home-SI">
+            <h1>Sign Up width Email</h1>
+            <div class="login_box">
+                <p class="">Your Email</p>
+                <input type="email" id="email" name="email">
+                <p class="title-Up">you name</p>
+                <input type="text" id="username" name="username">
+                <p class="title-Up">Your Password</p>
+                <input type="password" name="password" id="password">
+                <p class="title-Up">date of birth</p>
+                <input type="date" name="date" id="dateOfBirth">
+            </div>
+            <div class="box_button">
+                <button class="register" onclick="register()" onkeyup="registerEnter(event)">register</button>
+                <button class="signin" onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+    <!-- </form> -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/views/components/register/register.js"></script>
+
+</html>

@@ -1,0 +1,45 @@
+<div class="editMangaAuthorPost">
+
+  <div class="adminMenu">
+    <%- include('../../../../components/adminMenu/adminMenu.ejs') %>
+  </div>
+  <div class="editMangaAuthorPost-info">
+    <div class="mainUserProfile__item">
+      <div class="mainUserProfile__itemLeft">
+        <h3>Name</h3>
+        <p class="Name-span">
+          <%= chapter.title %>
+        </p>
+      </div>
+      <div class="mainUserProfile__itemRight">
+        <button class="btnEdit editName">Edit</button>
+        <div class="buttonSet setEditName">
+          <button class="btnSave saveName" onclick="ChangeName('<%= chapter._id %>')">Save</button>
+          <button class="btnCancel cancelName">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <hr class="change-splitter">
+    <!-- des -->
+    <div class="mainUserProfile__item">
+      <div class="mainUserProfile__itemLeft">
+        <h3>content</h3>
+        <p class="Des-span">
+          <%= chapter.content %>
+        </p>
+      </div>
+      <div class="mainUserProfile__itemRight">
+        <button class="btnEdit editDes">Edit</button>
+        <div class="buttonSet setEditDes">
+          <button class="btnSave saveDes" onclick="ChangeDes('<%= chapter._id %>')">Save</button>
+          <button class="btnCancel cancelDes">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <hr class="change-splitter">
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/views/pages/admin/manageChapter/editChapter/editChapter.css" />
+  <script src="/views/pages/admin/manageChapter/editChapter/editChapter.js"></script>

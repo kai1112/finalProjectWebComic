@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/pages/Home/read/read.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- menu -->
+    <header>
+        <% if(userDetail){%>
+            <%- include('../../../components/login_header/login_header') %>
+                <%}else{%>
+                    <!-- menu -->
+                    <%- include('../../../components/headerHome/header') %>
+                        <!-- mobile -->
+                        <%- include('../../../components/headerHome/headerMobile') %>
+                            <% } %>
+    </header>
+    <!-- menu -->
+    <!-- main -->
+    <div class="feature-bar common-style">
+        <a onclick="prev('<%=chapter.chap %>')" class="feature-bar-pre-chapter"><i
+                class="fa-solid fa-arrow-left-long"></i></a>
+        <a href="/" class="feature-bar-home"><i class="fa-solid fa-house"></i></a>
+        <button class="select-chapter">Select chapter</button>
+        <a onclick="window.scrollTo(0, $('.comment-area').offset().top)" class="feature-bar-comment">
+            <i class="fa-solid fa-comments"></i>
+        </a>
+        <a onclick="next('<%=chapter.chap %>','<%= allChapter.length + 1%>')" class="feature-bar-next-chapter"><i
+                class="fa-solid fa-arrow-right-long"></i></a>
+        <div class="feature-bar-chapter-list hidden">
+            <%for(let i=0; i < allChapter.length; i++){%>
+                <button onclick="goToChap('<%=allChapter[i].chap%>')"><a>Chương <%=allChapter[i].chap%>:
+                            <%=allChapter[i].title%></a></button>
+                <%}%>
+        </div>
+    </div>
+    <div class="main-container common-style">
+        <div class="chapter-transfer-top">
+            <a onclick="prev('<%=chapter.chap %>')" class="pre-chapter-top"><i class="fa-solid fa-arrow-left-long"></i>
+                Chương trước</a>
+            <a onclick="next('<%=chapter.chap %>','<%= allChapter.length + 1%>')" class="next-chapter-top">Chương sau <i
+                    class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+        <div class="item-title">
+            Chương <%=chapter.chap %> : <%=chapter.title %>
+        </div>
+        <div class="item-info">
+            <a href="" class="item-name"><i class="fa-solid fa-book"></i>
+                <%=mangaDetail.name%>
+            </a>
+            <a href="" class="item-author"><i class="fa-solid fa-file-pen"></i>
+                <%=mangaDetail.author.username%>
+            </a>
+            <div class="item-time"><i class="fa-solid fa-clock"></i>
+                <%=mangaDetail.createdAt.toLocaleString()%>
+            </div>
+        </div>
+        <div class="chapter-content">
+            <%- chapter.content%>
+        </div>
+
+    </div>
+    <div class="chapter-transfer-bottom common-style">
+        <a onclick="prev('<%=chapter.chap %>')" class="pre-chapter-bottom"><i class="fa-solid fa-arrow-left-long"></i>
+            Chương trước</a>
+        <a onclick="next('<%=chapter.chap %>','<%= allChapter.length + 1%>')" class="next-chapter-bottom">Chương sau <i
+                class="fa-solid fa-arrow-right-long"></i></a>
+    </div>
+    <div class="comment-area common-style">
+        <div class="comment-component ">
+            <div class="comment-container">
+                <div class="comment-top-feature">
+                    <h2>bình luận</h2>
+                    <form enctype="multipart/form-data" class="addfile-form">
+                        <label class="add-file-cover" for="addfile">Add images or files</label>
+                        <input type="file" name="addfile" id="addfile" />
+                    </form>
+                </div>
+                <div class="your-comment">
+                    <textarea name="" id="title" placeholder="Bình luận của bạn"></textarea>
+                    <button class="send-btn" onclick="addComment('<%= chapter._id%>')">
+                        <i class="fas fa-paper-plane    "></i>
+                    </button>
+                </div>
+                <div class="comment-list">
+                    <%- include('./comment.ejs') %>
+                </div>
+                <div class="pagination-btn">
+                    <%for(let i=0; i <total; i ++){ %>
+                        <button onclick="nextComment('<%=i+1%>')">
+                            <%=i+ 1%>
+                        </button>
+                        <%}%>
+                </div>
+
+            </div>
+            <div class="preview-img">
+                <img class="preview-image" src="" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- main -->
+
+    <!-- footer -->
+    <%- include('../../../components/footer') %>
+        <!-- footer -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/views/pages/Home/read/read.js"></script>
+
+</html>

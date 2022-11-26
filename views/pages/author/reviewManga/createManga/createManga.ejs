@@ -1,0 +1,49 @@
+<div class="createManga">
+  <div class="adminMenu">
+    <%- include('../../../../components/authorMenu/authorMenu.ejs') %>
+  </div>
+
+  <div class="createManga-info">
+    <form class="create-form" action="" enctype="multipart/form-data">
+      <div class="create-form-left">
+        <span>Name</span>
+        <input class="form-control" type="text" name="name" id="name" placeholder="Name..." /><br>
+        <div id="selectCategory">Choose Category
+          <select class="custom-select" id="selectNode" onchange="handleOption()">
+            <option value="" selected>Selectect</option>
+            <% category.forEach((e)=> {%>
+              <option value="category" onclick="changeCategory(this)" id="<%= e._id %>">
+                <%= e.name %>
+              </option>
+              <% }) %>
+          </select>
+        </div>
+        <div id="showcategory">
+
+        </div>
+        <br>
+        <span>Description</span>
+        <textarea class="form-control z-depth-1" rows="3" name="description" id="description"
+          placeholder="Description..."></textarea><br>
+        <span>Price</span>
+        <input class="form-control" type="number" name="price" id="price" placeholder="Price" /><br>
+        <button class="btn btn-primary" type="button" onclick="createManga()">submit</button>
+      </div>
+      <div class="create-form-right">
+        <label for="avatar">Browse your Avatar</label>
+        <input type="file" name="avatar" id="avatar" placeholder="avatar" />
+        <img class="preview-avatar" src="" alt="">
+      </div>
+      <div class="create-form-right">
+        <input type="file" name="backgroud_avatar" id="backgroud_avatar" placeholder="backgroud_avatar" />
+        <label for="backgroud_avatar">Browse your backgroud_avatar</label>
+        <img class="preview-backgroud_avatar" src="" alt="">
+      </div>
+    </form>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="/views/pages/author/reviewManga/createManga/createManga.css">
+<script src="/views/pages/author/reviewManga/createManga/createManga.js"></script>

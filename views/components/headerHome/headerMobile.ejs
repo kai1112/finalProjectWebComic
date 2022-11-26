@@ -1,0 +1,58 @@
+<!-- <link rel="stylesheet" href="/views/components/headerHome/header.css"> -->
+<div class="header_mobile">
+    <a href="/" class="logo_mobile">
+        <img src="http://truyen48.com/template/frontend/images/logo-icon.png" alt="">
+    </a>
+    <button id="toggle-dark-mode">
+        <i class="fa-regular fa-lightbulb"></i>
+    </button>
+    <div class="rightFeature">
+        <button class="show-search-bar">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <button class="btnFeature" onclick="viewRegister()">Register</button>
+        <button class="btnFeature" onclick="viewLogin()">Login</button>
+    </div>
+    <div class="search-bar">
+        <input class="search-field fieldmobile" type="text" oninput="type_search('mobile')" placeholder="Search...">
+        <button class="search-btn" onclick="search()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <div class="search-result resultmobile">
+            <%- include('./search.ejs') %>
+        </div>
+    </div>
+</div>
+<div class="menu_mobile">
+    <ul class="menu_mobile_content">
+        <li>
+            <a href="/">Home</a>
+            <div class="toggle_menu_mobile">
+                <i class="fa-sharp fa-solid fa-list"></i>
+            </div>
+        </li>
+        <li class="category-click ">
+            <span>category<i class="fa fa-caret-down"></i></span>
+            <div class="submenu_mobile cat-submenu-mobile  hidden">
+                <% category.map((category)=>{%>
+                    <a onclick="findCategory('<%=category.id%>')">
+                        <%=category.name%>
+                    </a>
+                    <% })%>
+            </div>
+        </li>
+        <li class="chart-click">
+            <span>Top buyer rating<i class="fa fa-caret-down"></i></span>
+            <div class="submenu_mobile chart-submenu-mobile  hidden">
+                <% user.map((user)=>{%>
+                    <a href=""><img src="<%=user._id.avatar%>" alt="">
+                        <%=user._id.username%>
+                    </a>
+                    <% })%>
+            </div>
+        </li>
+        <li class=""><a onclick="history()">history</a></li>
+        <li class=""><a onclick="follow()">Follow</a></li>
+    </ul>
+</div>
+<script src="/views/components/headerHome/headerMobile.js"></script>

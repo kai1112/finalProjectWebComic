@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<title>Create Author</title>
+</head>
+
+<body>
+    <div class="wrapper-createAuthor">
+        <div class="adminMenu">
+            <%- include('../../../components/adminMenu/adminMenu.ejs') %>
+        </div>
+
+        <div class="container-Up">
+            <div class="home-Up">
+                <h1>Sign Up width Email</h1>
+                <div class="menu-text">
+                    <p class="quotes"></p>
+                </div>
+                <div class="menu-text-input">
+                    <p class="title-Up">Author Email</p>
+                    <input type="email" class="input" id="email" name="email" placeholder="input author email"></input>
+                    <p class="title-Up">author name</p>
+                    <input type="text" class="input" id="username" name="username"
+                        placeholder="input author name"></input>
+                    <p class="title-Up">author Password</p>
+                    <input type="password" class="input" name="password" id="password"
+                        placeholder="input author password"></input>
+                    <p class="title-Up">date of birth</p>
+                    <input type="date" name="date" class="input" id="dateOfBirth"></input>
+                </div>
+                <div class="menu-tex-button">
+                    <button class="signUp" onclick="register()">register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="/views/pages/admin/createAuthor/createAuthor.css">
+<script src="/views/pages/admin/createAuthor/createAuthor.js"></script>
+
+</html>

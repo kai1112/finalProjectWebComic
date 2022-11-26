@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <title>Pagination</title>
+</head>
+
+<body>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">author name</th>
+        <th scope="col">email</th>
+        <th scope="col">money</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% listAuthor.map((user, index)=>{%>
+        <tr>
+          <th scope="row"><%= index+1  %></th>
+          <td>
+            <%= user.username %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td>
+            <%= user.monney %>
+          </td>
+          <td>
+            <% let classBtn = (user.status === 'active') ? 'success' : 'danger'%>
+            <button class="btn btn-<%= classBtn %>" onclick="changeStatus('<%= user._id %>')">
+              <%= user.status %>
+            </button>
+            <input style="width: 45%;display:inline" class="form-control" type="number" id="money<%=index  %>" name="money" placeholder="nhap so tien muon cong">
+            <button class="btn btn-dark" onclick="giftpoints('<%= user._id %>','<%= index %>')">+</button>
+          </td>
+        </tr>
+        <%})%>
+    </tbody>
+  </table>
+  <!-- </body>
+</html> -->

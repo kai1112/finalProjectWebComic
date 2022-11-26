@@ -1,0 +1,26 @@
+<title>Manage Manga</title>
+
+<div class="manageManga">
+  <div class="adminMenu">
+    <%- include('../../../../../components/adminMenu/adminMenu.ejs') %>
+  </div>
+
+  <div class="viewAllManga">
+    <div class="pagination">
+      <%- include('./paginationManga.ejs') %>
+    </div>
+    <% for(let i=1; i <=total; i++) {%>
+      <button class="btn btn-primary" onclick="pagination('<%= i %>', 10)">
+        <%= i %>
+      </button>
+      <%}%>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
+  integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="/views/pages/admin/manageManga/viewAllManga/viewAllMangaCss/viewAllManga.css">
+<script src="/views/pages/admin/manageManga/viewAllManga/viewAllManga.js"></script>

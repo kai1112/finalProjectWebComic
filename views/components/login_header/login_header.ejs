@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/components/login_header/login_header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- menu -->
+    <header>
+        <!-- pc -->
+        <div class="header">
+            <div class="headerFeature">
+                <a href="/" class="logo">
+                    <img src="http://truyen48.com/template/frontend/images/logo.png" alt="">
+                </a>
+                <button id="toggle-dark-mode">
+                    <i class="fa-regular fa-lightbulb"></i>
+                </button>
+                <div class="search-bar">
+                    <input id="name" class="search-field fieldpc" oninput="type_search('pc')" type="text"
+                        placeholder="Search...">
+                    <button class="search-btn" onclick="search()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div class="search-result resultpc">
+                        <%- include('../headerHome/search.ejs') %>
+                    </div>
+                </div>
+
+                <div class="rightFeature">
+                    <button class="btnFeature toggle-user-feature">
+                        <i class="fa-solid fa-user"></i>
+                        <div class="user-feature hidden">
+                            <a href="/user/buyed1">Truyện đã mua</a>
+                            <a href="/user/userProfile">Profile</a>
+                            <a href="/user/logout">Đăng xuất</a>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-content">
+                <ul class="menu_pc">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li class="category-hover">
+                        <span>Thể loại <i class="fa fa-caret-down"></i></span>
+                        <div class="submenu cat-submenu">
+                            <% category.map((category)=>{%>
+                                <a onclick="findCategory('<%=category.id%>')">
+                                    <%=category.name%>
+                                </a>
+                                <% })%>
+                        </div>
+                    </li>
+                    <li class="chart-hover">
+                        <span>Xếp hạng <i class="fa fa-caret-down"></i></span>
+                        <div class="submenu chart-submenu">
+                            <% user.map((user)=>{%>
+
+                                <a href=""><img src="<%=user._id.avatar%>" alt="">
+                                    <%=user._id.username%>
+                                </a>
+                                <% })%>
+                        </div>
+                    </li>
+                    <li><a onclick="history()">Lịch sử</a></li>
+                    <li><a onclick="follow()">Theo dõi</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- mobile -->
+        <div class="header_mobile">
+            <a href="/" class="logo_mobile">
+                <img src="http://truyen48.com/template/frontend/images/logo-icon.png" alt="">
+            </a>
+            <button id="toggle-dark-mode">
+                <i class="fa-regular fa-lightbulb"></i>
+            </button>
+            <div class="rightFeature">
+                <button class="btnFeature toggle-user-feature">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="user-feature hidden">
+                        <a href="/user/buyed">Truyện đã mua</a>
+                        <a href="/user/userProfile">Profile</a>
+                        <a onclick="logout()">Đăng xuất</a>
+                    </div>
+                </button>
+            </div>
+            <div class="search-bar">
+                <input class="search-field fieldmobile" type="text" oninput="type_search('mobile')"
+                    placeholder="Search...">
+                <button class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="search-result resultmobile">
+                    <a class="search-item" href="">
+                        <div class="search-item-img">
+                            <img src="http://i.truyenvua.com/ebook/190x247/witch-hunter_1552226189.jpg?r=r8645456"
+                                alt="">
+                        </div>
+                        <div class="search-item-info">
+                            <%- include('../headerHome/search.ejs') %>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="menu_mobile">
+            <ul class="menu_mobile_content">
+                <li>
+                    <a href="/">Trang chủ</a>
+                    <div class="toggle_menu_mobile">
+                        <i class="fa-sharp fa-solid fa-list"></i>
+                    </div>
+                </li>
+                <li class="category-click ">
+                    <span>Thể loại <i class="fa fa-caret-down"></i></span>
+                    <div class="submenu_mobile cat-submenu-mobile  hidden">
+                        <% category.map((category)=>{%>
+                            <a onclick="findCategory('<%=category.id%>')">
+                                <%=category.name%>
+                            </a>
+                            <% })%>
+                    </div>
+                </li>
+                <li class="chart-click">
+                    <span>Xếp hạng <i class="fa fa-caret-down"></i></span>
+                    <div class="submenu_mobile chart-submenu-mobile  hidden">
+                        <% user.map((user)=>{%>
+                            <a href=""><img src="<%=user._id.avatar%>" alt="">
+                                <%=user._id.username%>
+                            </a>
+                            <% })%>
+                    </div>
+                </li>
+                <li class=""><a onclick="history()">Lịch sử</a></li>
+                <li class=""><a onclick="follow()">Theo dõi</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- menu -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/views/components/login_header/login_header.js"></script>
+
+</html>

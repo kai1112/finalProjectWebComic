@@ -1,0 +1,12 @@
+.wrapper-author_info {
+    display: flex;
+    gap: 20px;
+}
+
+.author-info {
+    flex: 1
+}
+.author-info  div:first-child{
+    width: 50%;
+    margin-top: 1rem;
+}

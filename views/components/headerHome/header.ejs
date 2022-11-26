@@ -1,0 +1,56 @@
+<!-- <link rel="stylesheet" href="/views/components/headerHome/header.css"> -->
+<!-- pc -->
+<div class="header">
+    <div class="headerFeature">
+        <a href="/" class="logo">
+            <img src="http://truyen48.com/template/frontend/images/logo.png" alt="">
+        </a>
+        <button id="toggle-dark-mode">
+            <i class="fa-regular fa-lightbulb"></i>
+        </button>
+        <div class="search-bar">
+            <input id="name" class="search-field fieldpc" oninput="type_search('pc')" type="text"
+                placeholder="Search...">
+            <button class="search-btn" onclick="search()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <div class="search-result resultpc">
+                <%- include('./search.ejs') %>
+            </div>
+        </div>
+
+        <div class="rightFeature">
+            <button class="btnFeature" onclick="viewRegister()">Register</button>
+            <button class="btnFeature" onclick="viewLogin()">Login</button>
+        </div>
+    </div>
+</div>
+<div class="menu">
+    <div class="menu-content">
+        <ul class="menu_pc">
+            <li><a href="/">Home</a></li>
+            <li class="category-hover">
+                <span>category<i class="fa fa-caret-down"></i></span>
+                <div class="submenu cat-submenu">
+                    <% category.map((category)=>{%>
+                        <a onclick="findCategory('<%=category.id%>')">
+                            <%=category.name%>
+                        </a>
+                        <% })%>
+                </div>
+            </li>
+            <li class="chart-hover">
+                <span>Top buyer rating<i class="fa fa-caret-down"></i></span>
+                <div class="submenu chart-submenu">
+                    <% user.map((user)=>{%>
+                        <a href=""><img src="<%=user._id.avatar%>" alt="">
+                            <%=user._id.username%>
+                        </a>
+                        <% })%>
+                </div>
+            </li>
+            <li><a onclick="history()">history</a></li>
+            <li><a onclick="follow()">Follow</a></li>
+        </ul>
+    </div>
+</div>

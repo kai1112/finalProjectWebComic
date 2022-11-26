@@ -1,0 +1,17 @@
+<div class="edichapter-author">
+  <div class="adminMenu">
+    <%- include('../../../../components/authorMenu/authorMenu.ejs') %>
+  </div>
+  
+  <div class="edit-chapter">
+    <h3>Edit</h3>
+    <input class="form-control" type="text" id="title" placeholder="title" value="<%=chapter.title %>"/><br>
+    <textarea class="form-control z-depth-1" id="content" rows="3" placeholder="Content"><%=chapter.content %> %</textarea><br>
+    <button class="btn btn-primary" onclick="editChapter('<%=chapter._id %>')">Edit chapter</button>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="/views/pages/author/reviewChapter/editChapter/editChapter.css" />
+<script src="/views/pages/author/reviewChapter/editChapter/editChapter.js"></script>

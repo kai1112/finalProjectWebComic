@@ -1,0 +1,26 @@
+<% comment.map((c)=>{%>
+    <div class="comment-item">
+        <a href="">
+            <img src="/<%=c.userID.avatar%>" alt="">
+        </a>
+        <div class="comment-info">
+            <a class="comment-username">
+                <%=c.userID.username%>
+            </a>
+            <p class="comment-time"><i class="fa-regular fa-clock"></i>
+                <%=c.createdAt.toLocaleString()%>
+            </p>
+            <p class="comment-content">
+                <%=c.title%>
+            </p>
+            <p class="comment-content">
+                <img src="<%=c.audio%>" alt="">
+            </p>
+            <button class="like-field" onclick="like('<%=c._id%>')">
+                <i class="fa-solid fa-thumbs-up">
+                    <%= c.reaction.length%>
+                </i>
+            </button>
+        </div>
+    </div>
+    <%})%>

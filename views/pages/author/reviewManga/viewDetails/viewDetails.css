@@ -1,0 +1,28 @@
+.details-manga {
+    display: flex;
+    gap: 20px;
+}
+
+.details-manga-info {
+    flex: 1
+}
+.post-info{
+    display: flex;
+    width: 70%;
+    margin-top: 1rem;
+}
+.left-info{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-right: 10px;
+    border-right: 1px solid orange;
+}
+.right-info{
+    width: 35%;
+    display: flex;
+    margin-left: 10px;
+}
+.right-info img{
+    width: 100%;
+}

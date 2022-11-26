@@ -1,0 +1,38 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">avatar</th>
+            <th scope="col">category</th>
+            <th scope="col">author</th>
+            <th scope="col">action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% allManga.map((manga, index)=>{%>
+            <tr>
+                <th scope="row">
+                    <%=index + 1%>
+                </th>
+                <td>
+                    <%=manga.name%>
+                </td>
+                <td><img src="<%=manga.avatar%>" alt="" width="40px"></td>
+                <td>
+                    <% for(let i=0; i < manga.category.length; i++) {%>
+                        <%=manga.category[i].name%>
+                            <%}%>
+                </td>
+                <td>
+                    <%=user%>
+                </td>
+                <td>
+                    <button class="btn btn-warning" onclick="edit('<%= manga._id%>')">edit</button>
+                    <button class="btn btn-info" onclick="viewDetails('<%= manga._id%>')">view detail</button>
+                    <button class="btn btn-danger" onclick="delette('<%= manga._id%>')">delete</button>
+                </td>
+            </tr>
+            <%})%>
+    </tbody>
+</table>

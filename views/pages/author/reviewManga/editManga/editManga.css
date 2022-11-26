@@ -1,0 +1,57 @@
+.editManga {
+    display: flex;
+    gap: 20px;
+}
+
+.editManga-info {
+    flex: 1
+}
+
+.edit-form {
+    width: 70%;
+    display: flex;
+    padding: 1rem 0;
+}
+
+.edit-form-left {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    padding-right: 10px;
+    border-right: 1px solid orange;
+}
+#description{
+    height: 300px;
+}
+.edit-form-right {
+    display: flex;
+    width: 35%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form-left button {
+    width: 30%;
+    margin: auto;
+}
+
+label {
+    cursor: pointer;
+    margin-bottom: 14px;
+    border: 1px solid orange;
+    padding: 5px 10px;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+#avatar {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.preview-avatar {
+    width: 100%;
+}

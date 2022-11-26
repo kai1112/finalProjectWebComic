@@ -1,0 +1,45 @@
+<% comments.map((c)=>{%>
+    <div class="comment-list">
+        <div class="comment-item">
+            <a href="">
+                <img src="/<%=c?.userID?.avatar%>" alt="" />
+            </a>
+            <div class="comment-info">
+                <a class="comment-username">
+                    <%=c?.userID?.username%>
+                </a>
+                <p class="comment-time">
+                    <i class="fa-regular fa-clock"></i>
+                    <%=c.createdAt.toLocaleString()%>
+                </p>
+                <p class="comment-content">
+                    <%=c.title%>
+                </p>
+                <%if(c?.audio.split(".").includes("jpg", "png" )){%>
+                    <img src="<%= c?.audio  %> " alt="" width="100px" class="comment-img" />
+                    <%}else if(c?.audio=="" ){%>
+                        <%}else{%>
+                            <audio controls>
+                                <source src="<%= c?.audio  %> " type="audio/ogg" class="comment-img" />
+                                <source src="<%= c?.audio  %> " type="audio/ogg" class="comment-img" />
+                            </audio>
+                            <%}%>
+                                <button class="like-field" onclick="like('<%=c._id%>')">
+                                    <i class="fa-solid fa-thumbs-up">
+                                        <%= c.reaction.length%>
+                                    </i>
+                                </button>
+            </div>
+        </div>
+
+        <div class="comment_report">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <div>
+                <p onclick="deleteComment('<%=c._id%>', '<%=c.userID.id%>', '<%=userDetail?.id%>')">Delete</p>
+                <p onclick="reportComment('<%=c._id%>')" class="report_comment">Report</p>
+            </div>
+        </div>
+
+
+    </div>
+    <%})%>

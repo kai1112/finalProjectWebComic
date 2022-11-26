@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/pages/Home/review/review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home</title>
+</head>
+
+<body>
+    <!-- menu -->
+    <header>
+        <% if(userDetail){%>
+            <%- include('../../../components/login_header/login_header') %>
+                <%}else{%>
+                    <!-- menu -->
+                    <%- include('../../../components/headerHome/header') %>
+                        <!-- mobile -->
+                        <%- include('../../../components/headerHome/headerMobile') %>
+                            <% } %>
+    </header>
+    <!-- menu -->
+    <!-- main -->
+    </div>
+    <div class="padding-common">
+        <div class="item-title">
+            Chương <%=chapter.chap %> : <%=chapter.title %>
+        </div>
+        <div class="item-info">
+            <a href="" class="item-name"><i class="fa-solid fa-book"></i>
+                <%=mangaDetail.name%>
+            </a>
+            <a href="" class="item-author"><i class="fa-solid fa-file-pen"></i>
+                <%=mangaDetail.author.username%>
+            </a>
+            <div class="item-time"><i class="fa-solid fa-clock"></i>
+                <%=mangaDetail.createdAt.toLocaleString()%>
+            </div>
+        </div>
+        <div class="chapter-content">
+            <%- chapter.content.slice(0,1500)%>
+        </div>
+        <button class="more-btn"
+            onclick="readMore('<%= user?.monney%>', '<%= mangaDetail.price%>', '<%=checked%>')">view more</button>
+    </div>
+    <!-- main -->
+    <!-- footer -->
+    <%- include('../../../components/footer') %>
+        <!-- footer -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/views/pages/Home/review/review.js"></script>
+
+</html>

@@ -1,0 +1,8 @@
+.viewDetailChapterAuthor {
+    display: flex;
+    gap: 20px;
+}
+
+.viewDetailChapterAuthor-info {
+    flex: 1
+}

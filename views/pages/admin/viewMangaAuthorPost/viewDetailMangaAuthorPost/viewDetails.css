@@ -1,0 +1,28 @@
+.viewDetailMangaAuthorPost {
+    display: flex;
+    gap: 20px;
+}
+
+.viewDetailMangaAuthorPost-info {
+    flex: 1
+}
+.post-info{
+    display: flex;
+    width: 50%;
+    margin-top: 1rem;
+}
+.left-info{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-right: 10px;
+    border-right: 1px solid orange;
+}
+.right-info{
+    width: 30%;
+    display: flex;
+    margin-left: 10px;
+}
+.right-info img{
+    width: 100%;
+}

@@ -1,0 +1,100 @@
+.wrapper-createAuthor {
+    display: flex;
+    gap: 20px;
+}
+
+.container-Up {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.home-Up {
+    width: 40%;
+    margin: 80px auto;
+}
+
+.home-Up h1 {
+    text-align: center;
+}
+
+.container-Up h1 {
+    margin-bottom: 30px;
+
+}
+
+.menu-text,
+.menu-tex-button,
+.menu-text-input,
+.quotes {
+    margin-bottom: 20px;
+}
+
+
+.menu-text-input {
+    padding: 0px 15px 0px 15px;
+}
+
+.input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+
+input:focus {
+    outline: none;
+}
+
+.title-Up {
+    text-align: start;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.menu-tex-button {
+    margin-bottom: 20px;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.signUp {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.signUpGG,
+.signUpFB {
+    cursor: pointer;
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.signUpGG i {
+    text-align: start;
+}
+
+.signUpFB i {
+    text-align: start;
+}
+
+.link a {
+    color: rgb(87, 179, 116);
+    text-decoration: none;
+}

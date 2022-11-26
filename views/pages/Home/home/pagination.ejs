@@ -1,0 +1,55 @@
+<% listManga.map((m, index)=>{%>
+    <li class="card-item">
+        <a onclick="viewDetails('<%=m.slug%>')">
+            <img src='<%=m.avatar%>' alt="">
+            <%if(listChapter[index][0]?.mangaID===m.id){%>
+                <div class="more-info">
+                    <div class="time">
+                        <%=Math.ceil((d - listChapter[index][listChapter[index].length-1]?.createdAt)/3600000) %> giờ
+                            trước
+                    </div>
+                </div>
+                <%}%>
+        </a>
+        <div class="bookname" onclick="viewDetails('<%=m.slug%>')">
+            <%=m.name%>
+        </div>
+        <div>
+            <%if(listChapter[index][0]?.mangaID===m.id){%>
+                <div class="lastest-chapter" class="lastest-chapter"
+                    onclick="viewChapter1('<%=listChapter[index][listChapter[index].length-1]?.chap%>', '<%=m?.slug%>','<%=m?.price%>', '<%=userDetail?.monney%>')">
+                    Chapter <%=listChapter[index][listChapter[index].length-1]?.chap%>
+                </div>
+                <%}%>
+        </div>
+    </li>
+    <%})%>
+        <div class="see-more">
+            <%if(total==1){%>
+                <button class="pagination-btn" onclick="nextPages('<%=1%>')">
+                    <%=1%>
+                </button>
+                <%}else{ if(1*page +3> total -1){%>
+                    </button> <button class="pagination-btn" onclick="nextPages('<%=1*total -3%>')">
+                        <%=1*total-3%>
+                            <button class="pagination-btn" onclick="nextPages('<%=1*total-2%>')">
+                                <%=1*total-2%>
+                            </button> <button class="pagination-btn" onclick="nextPages('<%=1*total-1%>')">
+                                <%=1*total-1%>
+
+                                    <%}else{%>
+                            </button> <button class="pagination-btn" onclick="nextPages('<%=1*page+1%>')">
+                                <%=1*page + 1%>
+
+                            </button>
+                            <button class="pagination-btn" onclick="nextPages('<%=1*page+2%>')">
+                                <%=1*page + 2%>
+                            </button>
+                            <%}%>
+
+                                <button class="pagination-btn" onclick="nextPages('<%=1*total%>')">
+                                    <%=1*total%>
+                                </button>
+                                <%}%>
+
+        </div>

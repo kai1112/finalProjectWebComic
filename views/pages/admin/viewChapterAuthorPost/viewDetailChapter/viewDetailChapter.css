@@ -1,0 +1,8 @@
+.viewDetailChapter {
+    display: flex;
+    gap: 20px;
+}
+
+.viewDetailChapter-info {
+    flex: 1
+}

@@ -1,0 +1,77 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+<title>View Details Manga Author Post</title>
+
+<div class="viewDetailMangaAuthorPost">
+  <div class="adminMenu">
+    <%- include('../../../../components/adminMenu/adminMenu.ejs') %>
+  </div>
+  <div class="viewDetailMangaAuthorPost-info">
+    <div class="post-info">
+      <div class="left-info">
+        <h4>
+          Name: <%= manga.name %>
+        </h4>
+        <p>
+          Category: <% manga.category.forEach(cat=>{ %>
+            <%= cat.name %>
+              <% }) %>
+        </p>
+        <h5>
+          Author: <%= manga.author.username %>
+        </h5>
+        <p>
+          Description: <%= manga.description %>
+        </p>
+      </div>
+      <div class="right-info">
+        <img src="<%= manga.avatar %>" alt="avatar" width="50px" />
+      </div>
+    </div>
+    <!-- chapter -->
+    <h1> Chapter List</h1>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <th>#</th>
+        <th>Chapter name</th>
+        <th>Tools</th>
+      </thead>
+      <tbody>
+        <% chapter.map((chapter, index)=>{%>
+          <tr>
+            <th scope="row">
+              <%=index + 1%>
+            </th>
+            <td scope="row">
+              <a onclick="viewDetailChapter('<%= chapter._id %>')">
+                <%= chapter.title %>
+              </a>
+            </td>
+            <td scope="row">
+              <% let classBtn=(chapter.stautus==='review' ) ? 'outline-success' : 'success' %>
+                <button class="btn btn-<%=classBtn%>" onclick="post('<%= chapter._id%>')">
+                  <%= chapter.stautus %>
+                </button>
+
+                <button class="btn btn-warning"
+                  onclick="edichapter('<%= chapter._id %>', '<%= chapter.stautus %>')">edit chapter</button>
+                <button class="btn btn-danger" onclick="deleteChapter('<%= chapter._id %>')">delete chapter</button>
+            </td>
+          </tr>
+          <%})%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="/views/pages/admin/viewMangaAuthorPost/viewDetailMangaAuthorPost/viewDetails.css">
+<script src="/views/pages/admin/viewMangaAuthorPost/viewDetailMangaAuthorPost/viewDetails.js"></script>

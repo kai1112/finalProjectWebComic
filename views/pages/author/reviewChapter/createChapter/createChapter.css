@@ -1,0 +1,14 @@
+.create-chapter {
+    display: flex;
+    gap: 20px;
+}
+
+.create-chapter-info {
+    flex: 1
+}
+.create-chapter-info input,.create-chapter-info textarea{
+    width: 50%;
+}
+.create-chapter-info textarea{
+    min-height: 300px;
+}

@@ -1,0 +1,12 @@
+.manageUser {
+    display: flex;
+    gap: 20px;
+}
+
+.use-info {
+    flex: 1
+}
+.use-info div:first-child{
+    width: 50%;
+    margin-top: 1rem;
+}

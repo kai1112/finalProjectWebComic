@@ -1,0 +1,8 @@
+.manageManga {
+    display: flex;
+    gap: 20px;
+}
+
+.viewAllManga {
+    flex: 1
+}

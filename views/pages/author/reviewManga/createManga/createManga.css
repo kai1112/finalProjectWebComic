@@ -1,0 +1,65 @@
+.createManga {
+    display: flex;
+    gap: 20px;
+}
+
+.createManga-info {
+    flex: 1
+}
+
+.create-form {
+    width: 50%;
+    display: flex;
+    padding: 1rem 0;
+}
+
+.create-form-left {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding-right: 10px;
+    border-right: 1px solid orange;
+}
+
+.create-form-right {
+    display: flex;
+    width: 30%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-form-left button {
+    width: 30%;
+    margin: auto;
+}
+
+label {
+    cursor: pointer;
+    margin-bottom: 14px;
+    border: 1px solid orange;
+    padding: 5px 10px;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+#avatar {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.preview-avatar {
+    width: 100%;
+}
+
+#backgroud_avatar {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.preview-backgroud_avatar {
+    width: 100%;
+}

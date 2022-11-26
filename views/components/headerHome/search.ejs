@@ -1,0 +1,15 @@
+<%manga.map((m , index)=>{%>
+    <a class="search-item" href="" index="<%= index%>">
+        <div class="search-item-img">
+            <img src="<%=m.avatar%>" alt="">
+        </div>
+        <div class="search-item-info">
+            <b>
+                <%=m.name%>
+            </b>
+            <p>
+                <%=m.author.username%>
+            </p>
+        </div>
+    </a>
+    <%})%>

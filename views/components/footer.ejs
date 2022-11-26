@@ -1,0 +1,26 @@
+<footer>
+    <div class="footer">
+        <div class="footer-left">
+            <a href="" class="logo">
+                <img src="http://truyen48.com/template/frontend/images/logo.png" alt="">
+            </a>
+            <p class="quote">Always update the fastest new series to serve readers. Read stories completely free,
+                multi-device support.
+            </p>
+            <p class="contact">Email: adstruyenqq@gmail.com</p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-cat">
+                <% category.map((category)=>{%>
+                    <a onclick="findCategory('<%=category.id%>')">
+                        <%=category.name%>
+                    </a>
+                    <% })%>
+            </div>
+            <p class="copyright">All information and images on the website are collected from the Internet. We do not
+                own or be responsible for any information on this website. If it affects any individual or organization,
+                when requested, we will review and remove it immediately.
+            </p>
+        </div>
+    </div>
+</footer>
