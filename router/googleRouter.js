@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const passport = require('passport');
-const { HomePage } = require("../controllers/mangaController")
 const UserModel = require('../models/user.model')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const jwt = require('jsonwebtoken')
@@ -28,7 +27,7 @@ passport.use(new GoogleStrategy({
                 role: "user",
             });
         }
-        // console.log(profile);
+        console.log(30, profile);
         a = profile
         return cb(null, { data, profile });
     }
