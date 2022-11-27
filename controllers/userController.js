@@ -2,12 +2,15 @@ const UserModel = require('../models/user.model')
 const MangaModel = require('../models/manga.model')
 const CategoryModel = require('../models/category.model')
 const fs = require("fs");
+const { header } = require('../service/headerData')
+
 const BuyedModel = require('../models/buyed.model');
 //view profile
 
 module.exports.viewProfile = async (req, res) => {
   try {
     //  //  //
+    let a = await header(req, res);
 
     // khai bao bien cookies
     const cookies = req.cookies;
@@ -15,13 +18,13 @@ module.exports.viewProfile = async (req, res) => {
     let userDetail = await UserModel.findOne({ token: cookies.user })
     let manga = await MangaModel.find()
     let category = await CategoryModel.find().sort({ name: 'asc' })
-    let user = await UserModel.find().sort({ buyed: 'desc' }).limit(10)
+    // let user = await UserModel.find().sort({ buyed: 'desc' }).limit(10)
     // console.log(17, a.cookie);
     const userProfile = await UserModel.findOne({ token: cookies.user })
-    if (!user) {
+    if (!a.user) {
       console.log('user chuwa dang nhap');
     } else {
-      res.render('pages/user/profileUser/profileUser', { userDetail: userDetail, user: user, userProfile, manga, category: category })
+      res.render('pages/user/profileUser/profileUser', { userDetail: userDetail, user: a.user, userProfile, manga, category: category })
     }
   } catch (err) {
     console.log(err);

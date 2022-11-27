@@ -77,6 +77,8 @@ module.exports.viewPaginationManga = async (req, res) => {
     try {
 
         let allManga = await ReviewMangaModel.find().skip(req.query.limit * (req.query.page - 1)).limit(req.query.limit);
+        console.log(80, req.query.limit * (req.query.page - 1))
+
         let listAuthor = []
 
         for (let i = 0; i < allManga.length; i++) {
@@ -211,7 +213,7 @@ module.exports.PaginationManga = async (req, res) => {
 
         let allManga = await MangaModel.find().populate('author').skip(req.query.limit * (req.query.page - 1))
             .limit(req.query.limit);
-        // console.log(allManga);
+        console.log(216, req.query.limit * (req.query.page - 1));
         if (allManga) {
             res.render('pages/admin/manageManga/viewAllManga/viewAllMangaEjs/paginationManga', { allManga })
         } else {
@@ -346,7 +348,7 @@ module.exports.userViewMangaDetail = async (req, res) => {
                 }
             }
             // console.log(357, follow);
-            res.render('pages/home/page/page', { userDetail: a.userDetail, mangaDetail, chapter, followers, userDetails, follow, comments, comment, checked, manga, category, user: a.user })
+            res.render('pages/Home/page/page', { userDetail: a.userDetail, mangaDetail, chapter, followers, userDetails, follow, comments, comment, checked, manga, category, user: a.user })
         } else {
             console.log(312, 'chapter not found');
         }
@@ -360,9 +362,10 @@ module.exports.userViewPagination = async (req, res) => {
         console.log(req.query.page);
         let a = await header(req, res);
         let page = req.query.page;
-        let listManga = await MangaModel.find().skip(1 * (req.query.page - 1)).limit(20);
+        let listManga = await MangaModel.find().skip(req.query.limit * (req.query.page - 1)).limit(20);
         let allManga = await MangaModel.find();
-        // console.log(listManga);
+
+        console.log(368, req.query.limit * (req.query.page - 1));
         let total = Math.ceil(allManga.length / 20)
         let chapter = []
         for (let i = 0; i < listManga.length; i++) {
@@ -411,7 +414,8 @@ module.exports.HomePage = async (req, res) => {
         }
         // console.log(393, comment);
 
-        let listManga = await MangaModel.find().skip(10 * (req.query.page - 1)).limit(20).sort({ views: 'desc' });
+        let listManga = await MangaModel.find().sort({ views: 'desc' }).limit(20);
+        console.log(418, listManga);
         let allManga = await MangaModel.find()
         let total = Math.ceil(allManga.length / 10)
         let chapter = []
@@ -501,7 +505,8 @@ module.exports.getpaginationComment = async (req, res) => {
         let manga = await MangaModel.findOne({ slug: req.params.slug })
         let chapter = await ChapterModel.findOne({ mangaID: manga.id, chap: req.params.chap })
         let allComment = await commentModel.find({ chapterID: chapter.id }).populate('userID').sort({ reactionn: 'asc' })
-        let comment = await commentModel.find({ chapterID: chapter.id }).populate('userID').sort({ reactionn: 'asc' }).skip(1 * (req.query.page - 1)).limit(10);
+        let comment = await commentModel.find({ chapterID: chapter.id }).populate('userID').sort({ reactionn: 'asc' }).skip(req.query.limit * (req.query.page - 1)).limit(10);
+        console.log(509, req.query.limit * (req.query.page - 1));
         let total = Math.ceil((allComment.length + 1) / (comment.length + 1))
 
         if (chapter) {

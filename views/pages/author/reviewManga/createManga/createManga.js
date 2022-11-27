@@ -60,11 +60,11 @@ async function createManga() {
                 contentType: false,
             });
             if (data.status == 200) {
-                console.log("create successful");
+                alert("create successful");
                 window.location.href = `/reviewManga/viewAllManga`;
             }
         } else {
-            alert("nhap name lon hon 5");
+            alert("you need to enter name greater than 5 characters");
         }
     } catch (e) {
         console.log(e);

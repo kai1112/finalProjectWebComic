@@ -57,9 +57,9 @@ module.exports.ChangeUserAvatar = async (req, res) => {
     } else {
       path = req.file.path;
     }
-    if (userInfo.avatar !== "") {
-      fs.unlinkSync(userInfo.avatar)
-    }
+    // if (userInfo.avatar !== "") {
+    //   fs.unlinkSync(userInfo.avatar)
+    // }
     await UserModel.updateOne({ _id: userId }, { avatar: path })
     res.json({ status: 200 })
   } catch (error) {
