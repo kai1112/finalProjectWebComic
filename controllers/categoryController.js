@@ -104,9 +104,9 @@ module.exports.findMangaByCategory = async (req, res) => {
         let a = await header(req, res);
         // console.log(req.params.id);
         let category = await CategoryModel.find().sort({ name: 'asc' })
-        let user = await UserModel.find().sort({ buyed: 'desc' }).limit(10)
+        // let user = await UserModel.find().sort({ buyed: 'desc' }).limit(10)
         let manga = await MangaModel.find({ 'category.id': req.params.id })
-        res.render('pages/findByCategory/findByCategory', { manga, user, category, userDetail: a.userDetail })
+        res.render('pages/findByCategory/findByCategory', { manga, user: a.user, category, userDetail: a.userDetail })
         // console.log(79, manga);
     } catch (err) {
         console.log(err);

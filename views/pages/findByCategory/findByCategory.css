@@ -23,14 +23,17 @@ body {
 /* menu pc */
 .header {
     width: 100%;
+    height: 64px;
     background: #fff;
     padding: 10px 0;
     display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
 }
 
 .headerFeature {
+    position: relative;
     width: 100%;
-    height: 100%;
     margin: 0 auto;
     display: flex;
 }
@@ -129,6 +132,9 @@ body {
 }
 
 .rightFeature {
+    position: absolute;
+    right: 0;
+    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -213,7 +219,7 @@ body {
 
 .submenu>a {
     width: 20%;
-    line-height: 40px;
+    line-height: 50px;
     cursor: pointer;
     font-size: 14px;
     text-decoration: none;

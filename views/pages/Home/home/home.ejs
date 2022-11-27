@@ -56,14 +56,15 @@
                 <div class="banner_mid">
                     <a onclick="viewDetails('<%=manga[0]?.slug%>')">
                         <%if(chapter[0]=="" ){%>
-                            <div class="cover_chapter"></div>
+                            <img src='<%=manga[0]?.avatar%>' alt="">
+                            <div class="cover_chapter">Chương <%=chapter[0]?.length%>
+                            </div>
+                            <div class="cover_shadow_mid">
+                                <%= manga[0]?.name%>
+                            </div>
                             <%}else{%>
-                                <img src='<%=manga[0]?.avatar%>' alt="">
-                                <div class="cover_chapter">Chương <%=chapter[0]?.length%>
-                                </div>
-                                <div class="cover_shadow_mid">
-                                    <%= manga[0]?.name%>
-                                </div>
+                                <div class="cover_chapter"></div>
+
                                 <%}%>
                     </a>
                 </div>

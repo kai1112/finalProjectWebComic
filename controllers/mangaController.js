@@ -432,7 +432,7 @@ module.exports.HomePage = async (req, res) => {
 
         // console.log(chapter[2]);
         let d = new Date();
-        res.render('pages/home/home/home', { page, d, manga, listChapter, chapter, userDetail: a.userDetail, category: a.category, muaNhieu, user: a.user, comment, total, listManga })
+        res.render('pages/Home/home/home', { page, d, manga, listChapter, chapter, userDetail: a.userDetail, category: a.category, muaNhieu, user: a.user, comment, total, listManga })
     } catch (e) {
         console.log(e);
     }
