@@ -31,10 +31,16 @@
                 <div class="banner_left">
                     <a onclick="viewDetails('<%=manga[1]?.slug%>')">
                         <img src='<%=manga[1]?.avatar%>' alt="">
+                        <img src='<%=manga[1]?.avatar%>' alt="">
                         <%if(chapter[1]=="" ){%>
+                            <div class="cover_shadow">
+                                <%= manga[1]?.name%>
+                            </div>
                             <%}else{%>
-                                <img src='<%=manga[1]?.avatar%>' alt="">
                                 <div class="cover_chapter">Chương <%=chapter[1]?.length%>
+                                </div>
+                                <div class="cover_shadow">
+                                    <%= manga[1]?.name%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -44,28 +50,33 @@
                     <a onclick="viewDetails('<%=manga[2]?.slug%>')">
                         <img src='<%=manga[2]?.avatar%>' alt="">
                         <%if(chapter[2]=="" ){%>
+                            <div class="cover_shadow">
+                                <%= manga[2]?.name%>T
+                            </div>
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[2]?.length%>
                                 </div>
+                                <div class="cover_shadow">
+                                    <%= manga[2]?.name%>T
+                                </div>
                                 <%}%>
-                                    <div class="cover_shadow">
-                                        <%= manga[2]?.name%>T
-                                    </div>
+
                     </a>
                 </div>
                 <div class="banner_mid">
                     <a onclick="viewDetails('<%=manga[0]?.slug%>')">
+                        <img src='<%=manga[0]?.avatar%>' alt="">
                         <%if(chapter[0]=="" ){%>
-                            <img src='<%=manga[0]?.avatar%>' alt="">
                             <div class="cover_chapter">Chương <%=chapter[0]?.length%>
+
                             </div>
                             <div class="cover_shadow_mid">
                                 <%= manga[0]?.name%>
                             </div>
                             <%}else{%>
-                                <div class="cover_chapter"></div>
-
-                                <%}%>
+                                <div class="cover_shadow_mid">
+                                    <%= manga[0]?.name%>
+                                        <%}%>
                     </a>
                 </div>
                 <div class="banner_right">
@@ -75,6 +86,9 @@
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[3]?.length%>
                                 </div>
+                                <div class="cover_shadow">
+                                    <%= manga[3]?.name%>
+                                </div>
                                 <%}%>
                                     <div class="cover_shadow">
                                         <%= manga[3]?.name%>
@@ -83,14 +97,18 @@
                     <a onclick="viewDetails('<%=manga[4]?.slug%>')">
                         <img src='<%=manga[4]?.avatar%>' alt="">
                         <%if(chapter[4]=="" ){%>
+                            <div class="cover_shadow">
+                                <%= manga[4]?.name%>
+                            </div>
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[4]?.length%>
                                 </div>
+                                <div class="cover_shadow">
+                                    <%= manga[4]?.name%>
+                                </div>
                                 <%}%>
 
-                                    <div class="cover_shadow">
-                                        <%= manga[4]?.name%>
-                                    </div>
+
                     </a>
                 </div>
             </div>
