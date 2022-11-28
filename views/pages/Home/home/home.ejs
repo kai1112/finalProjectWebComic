@@ -32,14 +32,8 @@
                     <a onclick="viewDetails('<%=manga[1]?.slug%>')">
                         <img src='<%=manga[1]?.avatar%>' alt="">
                         <%if(chapter[1]=="" ){%>
-                            <div class="cover_shadow">
-                                <%= manga[1]?.name%>
-                            </div>
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[1]?.length%>
-                                </div>
-                                <div class="cover_shadow">
-                                    <%= manga[1]?.name%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -49,33 +43,27 @@
                     <a onclick="viewDetails('<%=manga[2]?.slug%>')">
                         <img src='<%=manga[2]?.avatar%>' alt="">
                         <%if(chapter[2]=="" ){%>
-                            <div class="cover_shadow">
-                                <%= manga[2]?.name%>T
-                            </div>
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[2]?.length%>
                                 </div>
-                                <div class="cover_shadow">
-                                    <%= manga[2]?.name%>T
-                                </div>
                                 <%}%>
-
+                                    <div class="cover_shadow">
+                                        <%= manga[2]?.name%>T
+                                    </div>
                     </a>
                 </div>
                 <div class="banner_mid">
                     <a onclick="viewDetails('<%=manga[0]?.slug%>')">
                         <img src='<%=manga[0]?.avatar%>' alt="">
                         <%if(chapter[0]=="" ){%>
-
-                            <div class="cover_shadow_mid">
-                                <%= manga[0]?.name%>
-                            </div>
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[0]?.length%>
                                 </div>
-                                <div class="cover_shadow_mid">
-                                    <%= manga[0]?.name%>
-                                        <%}%>
+
+                                <%}%>
+                                    <div class="cover_shadow_mid">
+                                        <%= manga[0]?.name%>
+                                    </div>
                     </a>
                 </div>
                 <div class="banner_right">
@@ -85,9 +73,6 @@
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[3]?.length%>
                                 </div>
-                                <div class="cover_shadow">
-                                    <%= manga[3]?.name%>
-                                </div>
                                 <%}%>
                                     <div class="cover_shadow">
                                         <%= manga[3]?.name%>
@@ -96,18 +81,13 @@
                     <a onclick="viewDetails('<%=manga[4]?.slug%>')">
                         <img src='<%=manga[4]?.avatar%>' alt="">
                         <%if(chapter[4]=="" ){%>
-                            <div class="cover_shadow">
-                                <%= manga[4]?.name%>
-                            </div>
                             <%}else{%>
                                 <div class="cover_chapter">Chương <%=chapter[4]?.length%>
                                 </div>
-                                <div class="cover_shadow">
-                                    <%= manga[4]?.name%>
-                                </div>
                                 <%}%>
-
-
+                                    <div class="cover_shadow">
+                                        <%= manga[4]?.name%>
+                                    </div>
                     </a>
                 </div>
             </div>
@@ -143,7 +123,6 @@
                     <div class="main-content">
                         <ul class="list-item">
                             <%- include('./pagination') %>
-
                         </ul>
                         <div class="comment-zone">
                             <div class="commentMainLayout">
@@ -174,7 +153,6 @@
                                                                 <%}else{%>
                                                                     <%}%>
                                                     </p>
-
                                             </div>
                                             <i class="fa-solid fa-thumbs-up like-total">
                                                 <%=m.reaction?.length%>
@@ -192,7 +170,6 @@
     <!-- footer -->
     <%- include('../../../components/footer') %>
         <!-- footer -->
-
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
     integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
