@@ -16,10 +16,10 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">ten nguoi dung</th>
-        <th scope="col">email</th>
-        <th scope="col">diem hien co</th>
-        <th scope="col">action</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Money</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -44,9 +44,8 @@
               </button>
               <input style="width: 45%;display:inline" class="form-control" type="number" id="money<%=index  %>"
                 name="money" placeholder="nhap so tien muon cong">
-              <button class="btn btn-dark" onclick="giftpoints('<%= user._id %>','<%= index %>')">tặng điểm</button>
-              <button class="btn btn-dark" onclick="removepoints('<%= user._id %>','<%= index %>')">trừ điểm
-                điểm</button>
+              <button class="btn btn-dark" onclick="giftpoints('<%= user._id %>','<%= index %>')">Plus money</button>
+              <button class="btn btn-dark" onclick="removepoints('<%= user._id %>','<%= index %>')">Minus money</button>
           </td>
         </tr>
         <%})%>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Home</title>
+    <title>Detail manga</title>
 </head>
 
 <body>
@@ -51,17 +51,18 @@
                         <p class="info-top">
                             <%= chapter.length%>
                         </p>
-                        <p class="info-bottom">Chương</p>
+                        <p class="info-bottom">Chap</p>
                     </div>
                     <div class="total-read">
                         <p class="info-top">
                             <%= mangaDetail.views%>
                         </p>
-                        <p class="info-bottom">Lượt đọc</p>
+                        <p class="info-bottom">View</p>
                     </div>
                     <div class="total-read">
                         <p class="info-top">
-                            <%= mangaDetail.price%>
+
+                            <%=mangaDetail.price%>
                         </p>
                         <p class="info-bottom">Price</p>
                     </div>
@@ -70,7 +71,7 @@
                     <button class="read"
                         onclick="readFirst('<%= chapter[0]?.chap%>','<%=mangaDetail?.price%>', '<%=userDetails?.monney%>', '<%=checked%>')"><i
                             class="fa-solid fa-glasses"></i>
-                        Đọc truyện</button>
+                        Read</button>
                     <button class="save" onclick="followManga('<%=mangaDetail._id%>')"><i
                             class="fa-regular fa-bookmark"></i>
                         <% if(follow){%>
@@ -82,22 +83,22 @@
                     <% if(mangaDetail.price> 0){%>
                         <button class="read" onclick="review('<%= chapter[0]?.chap%>')"><i
                                 class="fa-solid fa-glasses"></i>
-                            Review truyện</button>
+                            Review Manga</button>
                         <%}%>
                 </div>
             </div>
         </div>
         <div class="item-feature">
             <div class="feature-bar">
-                <a id="feature-bar-des" class="nav-active">Giới thiệu</a>
-                <a id="feature-bar-chapter">Danh sách chương <span class="total">
+                <a id="feature-bar-des" class="nav-active">Introduction</a>
+                <a id="feature-bar-chapter">List Chap<span class="total">
                         <%= chapter.length%>
                     </span></a>
-                <a id="feature-bar-comment">Bình luận <span class="total">
+                <a id="feature-bar-comment">Comment<span class="total">
                         <%=comments.length%>
                     </span></a>
-                <a id="feature-bar-follow">Hâm mộ</a>
-                <a id="feature-bar-report">report <span class="total">
+                <a id="feature-bar-follow">Follower</a>
+                <a id="feature-bar-report">Report <span class="total">
                     </span></a>
             </div>
             <div class="feature-content">
@@ -110,7 +111,7 @@
 
                         <table class="des-detail">
                             <tr>
-                                <th>Cảm xúc</th>
+                                <th>Reaction</th>
                                 <td><button class="likeBtn"
                                         onclick="mangaLike('<%=mangaDetail?._id%>', '<%=userDetails?.id%>')">
                                         <i class="fa-solid fa-thumbs-up">

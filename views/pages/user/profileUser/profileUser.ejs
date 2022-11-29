@@ -10,7 +10,7 @@
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/views/pages/user/profileUser/profileUser.css" />
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 
 <body>
@@ -77,6 +77,15 @@
                             <button class="btnSave saveEmail" onclick="ChangeEmail()">Save</button>
                             <button class="btnCancel cancelEmail">Cancel</button>
                         </div>
+                    </div>
+                </div>
+                <hr class="change-splitter">
+                <div class="mainUserProfile__item">
+                    <div class="mainUserProfile__itemLeft">
+                        <h3>Money</h3>
+                        <p class="Email-span">
+                            <%= userProfile.monney %>
+                        </p>
                     </div>
                 </div>
                 <hr class="change-splitter">

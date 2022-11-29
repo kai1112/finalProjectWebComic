@@ -1,3 +1,4 @@
+<title>View top cmment</title>
 <div class="manageUser">
     <div class="adminMenu">
         <%- include('../../../components/adminMenu/adminMenu.ejs') %>
@@ -8,7 +9,7 @@
             <input type="text" class="form-control" id="searchUser" placeholder="Search User" aria-label="Search User"
                 aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <button onclick="searchUser()" class="btn btn-outline-secondary" type="button">search</button>
+                <button onclick="searchUser()" class="btn btn-outline-secondary" type="button">Search</button>
             </div>
         </div>
         <!DOCTYPE html>
@@ -30,12 +31,12 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">ten nguoi dung</th>
+                        <th scope="col">Name User</th>
                         <th scope="col">Email</th>
-                        <th scope="col">comment</th>
-                        <th scope="col">count like</th>
-                        <th scope="col">date</th>
-                        <th scope="col">action</th>
+                        <th scope="col">Comment</th>
+                        <th scope="col">Count like</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,8 +64,7 @@
                                 <input style="width: 45%;display:inline" class="form-control" type="number"
                                     id="money<%=index  %>" name="money" placeholder="nhap so tien muon cong">
                                 <button class="btn btn-dark"
-                                    onclick="giftpoints('<%= c.userID._id %>','<%= index %>')">tặng
-                                    điểm</button>
+                                    onclick="giftpoints('<%= c.userID._id %>','<%= index %>')">Plus money</button>
                             </td>
                         </tr>
                         <%})%>

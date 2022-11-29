@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Home</title>
 </head>
 
 <body>
@@ -39,9 +38,9 @@
                     <button class="btnFeature toggle-user-feature">
                         <i class="fa-solid fa-user"></i>
                         <div class="user-feature hidden">
-                            <a href="/user/buyed1">Truyện đã mua</a>
+                            <a href="/user/buyed1">Purchased stories</a>
                             <a href="/user/userProfile">Profile</a>
-                            <a href="/user/logout">Đăng xuất</a>
+                            <a href="/user/logout">Log out</a>
                         </div>
                     </button>
                 </div>
@@ -50,9 +49,9 @@
         <div class="menu">
             <div class="menu-content">
                 <ul class="menu_pc">
-                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/">Home</a></li>
                     <li class="category-hover">
-                        <span>Thể loại <i class="fa fa-caret-down"></i></span>
+                        <span>Category<i class="fa fa-caret-down"></i></span>
                         <div class="submenu cat-submenu">
                             <% category.map((category)=>{%>
                                 <a onclick="findCategory('<%=category?.id%>')">
@@ -62,7 +61,7 @@
                         </div>
                     </li>
                     <li class="chart-hover">
-                        <span>Xếp hạng <i class="fa fa-caret-down"></i></span>
+                        <span>Top buyer rating<i class="fa fa-caret-down"></i></span>
 
                         <div class="submenu chart-submenu">
                             <% user?.map((user)=>{%>
@@ -73,8 +72,8 @@
                                 <% })%>
                         </div>
                     </li>
-                    <li><a onclick="history()">Lịch sử</a></li>
-                    <li><a onclick="follow()">Theo dõi</a></li>
+                    <li><a onclick="history()">History</a></li>
+                    <li><a onclick="follow()">Follow</a></li>
                 </ul>
             </div>
         </div>
@@ -90,9 +89,9 @@
                 <button class="btnFeature toggle-user-feature">
                     <i class="fa-solid fa-user"></i>
                     <div class="user-feature hidden">
-                        <a href="/user/buyed">Truyện đã mua</a>
+                        <a href="/user/buyed">Purchased stories</a>
                         <a href="/user/userProfile">Profile</a>
-                        <a onclick="logout()">Đăng xuất</a>
+                        <a onclick="logout()">Log out</a>
                     </div>
                 </button>
             </div>
@@ -118,13 +117,13 @@
         <div class="menu_mobile">
             <ul class="menu_mobile_content">
                 <li>
-                    <a href="/">Trang chủ</a>
+                    <a href="/">Home</a>
                     <div class="toggle_menu_mobile">
                         <i class="fa-sharp fa-solid fa-list"></i>
                     </div>
                 </li>
                 <li class="category-click ">
-                    <span>Thể loại <i class="fa fa-caret-down"></i></span>
+                    <span>Category<i class="fa fa-caret-down"></i></span>
                     <div class="submenu_mobile cat-submenu-mobile  hidden">
                         <% category?.map((category)=>{%>
                             <a onclick="findCategory('<%=category?.id%>')">
@@ -134,7 +133,7 @@
                     </div>
                 </li>
                 <li class="chart-click">
-                    <span>Xếp hạng <i class="fa fa-caret-down"></i></span>
+                    <span>Top buyer rating<i class="fa fa-caret-down"></i></span>
                     <div class="submenu_mobile chart-submenu-mobile  hidden">
                         <% user.map((user)=>{%>
                             <a href=""><img src="<%=user?._id?.avatar%>" alt="">
@@ -143,8 +142,8 @@
                             <% })%>
                     </div>
                 </li>
-                <li class=""><a onclick="history()">Lịch sử</a></li>
-                <li class=""><a onclick="follow()">Theo dõi</a></li>
+                <li class=""><a onclick="history()">History</a></li>
+                <li class=""><a onclick="follow()">Follow</a></li>
             </ul>
         </div>
     </header>

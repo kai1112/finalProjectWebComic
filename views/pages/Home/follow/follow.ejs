@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Library</title>
+    <title>Follow</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
     <!-- main -->
     <div class="main-container">
         <div class="main">
-            <h2><i class="fa-solid fa-flag"></i> Truyện đang thoe dõi</h2>
+            <h2><i class="fa-solid fa-flag"></i>Followed</h2>
             <div class="main-content">
                 <ul class="list-item">
                     <%follows.map((f)=>{%>
@@ -53,37 +53,13 @@
     <!-- main -->
 
     <!-- footer -->
-    <footer>
-        <div class="footer">
-            <div class="footer-left">
-                <a href="" class="logo">
-                    <img src="http://truyen48.com/template/frontend/images/logo.png" alt="">
-                </a>
-                <p class="quote">Luôn cập nhật liên tục các bộ truyện mới nhanh nhất để phục vụ độc giả.
-                    Đọc truyện hoàn toàn miễn phí, hỗ trợ đa thiết bị.
-                </p>
-                <p class="contact">Email: adstruyenqq@gmail.com</p>
-            </div>
-            <div class="footer-right">
-                <div class="footer-cat">
-                    <a href="http://">Chuyển sinh</a>
-                    <a href="http://">Manhwa</a>
-                    <a href="http://">Romance</a>
-                    <a href="http://">Cổ đại</a>
-                    <a href="http://">Chuyển sinh</a>
-                    <a href="http://">Manhwa</a>
-                    <a href="http://">Romance</a>
-                    <a href="http://">Cổ đại</a>
-                </div>
-                <p class="copyright">Mọi thông tin và hình ảnh trên website đều được sưu tầm trên Internet.
-                    Chúng tôi không sở hữu hay chịu trách nhiệm bất kỳ thông tin nào trên web này.
-                    Nếu làm ảnh hưởng đến cá nhân hay tổ chức nào, khi được yêu cầu,
-                    chúng tôi sẽ xem xét và gỡ bỏ ngay lập tức.
-                </p>
-            </div>
-        </div>
-    </footer>
     <!-- footer -->
+    <footer>
+
+        <%- include('../../../components/footer') %>
+    </footer>
+        <!-- footer -->
+        <!-- footer -->
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
     integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Home</title>
+    <title>Read chap</title>
 </head>
 
 <body>
@@ -38,7 +38,7 @@
                 class="fa-solid fa-arrow-right-long"></i></a>
         <div class="feature-bar-chapter-list hidden">
             <%for(let i=0; i < allChapter.length; i++){%>
-                <button onclick="goToChap('<%=allChapter[i].chap%>')"><a>Chương <%=allChapter[i].chap%>:
+                <button onclick="goToChap('<%=allChapter[i].chap%>')"><a>Chap <%=allChapter[i].chap%>:
                             <%=allChapter[i].title%></a></button>
                 <%}%>
         </div>
@@ -46,12 +46,12 @@
     <div class="main-container common-style">
         <div class="chapter-transfer-top">
             <a onclick="prev('<%=chapter.chap %>')" class="pre-chapter-top"><i class="fa-solid fa-arrow-left-long"></i>
-                Chương trước</a>
-            <a onclick="next('<%=chapter.chap %>','<%= allChapter.length + 1%>')" class="next-chapter-top">Chương sau <i
+                Pre chap</a>
+            <a onclick="next('<%=chapter.chap %>','<%= allChapter.length + 1%>')" class="next-chapter-top">Next chap <i
                     class="fa-solid fa-arrow-right-long"></i></a>
         </div>
         <div class="item-title">
-            Chương <%=chapter.chap %> : <%=chapter.title %>
+            Chap <%=chapter.chap %> : <%=chapter.title %>
         </div>
         <div class="item-info">
             <a href="" class="item-name"><i class="fa-solid fa-book"></i>
@@ -71,15 +71,15 @@
     </div>
     <div class="chapter-transfer-bottom common-style">
         <a onclick="prev('<%=chapter.chap %>')" class="pre-chapter-bottom"><i class="fa-solid fa-arrow-left-long"></i>
-            Chương trước</a>
-        <a onclick="next('<%=chapter.chap %>','<%= allChapter.length + 1%>')" class="next-chapter-bottom">Chương sau <i
+            Pre chap</a>
+        <a onclick="next('<%=chapter.chap %>','<%= allChapter.length + 1%>')" class="next-chapter-bottom">Next chap <i
                 class="fa-solid fa-arrow-right-long"></i></a>
     </div>
     <div class="comment-area common-style">
         <div class="comment-component ">
             <div class="comment-container">
                 <div class="comment-top-feature">
-                    <h2>bình luận</h2>
+                    <h2>Comment</h2>
                     <form enctype="multipart/form-data" class="addfile-form">
                         <label class="add-file-cover" for="addfile">Add images or files</label>
                         <input type="file" name="addfile" id="addfile" />

@@ -25,7 +25,7 @@
         <img src="<%= manga.avatar %>" alt="avatar" width="50px" />
       </div>
     </div>
-    <button class="btn btn-primary" onclick="createChapter('<%= manga._id %>')">create chapter</button>
+    <button class="btn btn-primary" onclick="createChapter('<%= manga._id %>')">Create chapter</button>
 
     <!-- chapter -->
     <h1>chapter</h1>
@@ -43,9 +43,9 @@
             </td>
             <td><a onclick="viewDetailChapter('<%= chapter._id %>')"> Chapter: <%= chapter.title %></a></td>
             <td>
-              <button class="btn btn-warning" onclick="edichapter('<%= chapter._id %>', '<%= chapter.stautus %>')">edit
+              <button class="btn btn-warning" onclick="edichapter('<%= chapter._id %>', '<%= chapter.stautus %>')">Edit
                 chapter</button>
-              <button class="btn btn-danger" onclick="deleteChapter('<%= chapter._id %>')">delete chapter</button>
+              <button class="btn btn-danger" onclick="deleteChapter('<%= chapter._id %>')">Delete chapter</button>
             </td>
           </tr>
           <!-- <td>chap <%= chapter.content %></td> -->

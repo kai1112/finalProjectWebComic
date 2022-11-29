@@ -1,3 +1,4 @@
+<title>View report</title>
 <div class="manageUser">
     <div class="adminMenu">
         <%- include('../../../components/adminMenu/adminMenu.ejs') %>
@@ -5,10 +6,8 @@
 
     <div class="use-info">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" id="searchUser" placeholder="Search User" aria-label="Search User"
-                aria-describedby="basic-addon2">
+
             <div class="input-group-append">
-                <button onclick="searchUser()" class="btn btn-outline-secondary" type="button">search</button>
             </div>
         </div>
         <!DOCTYPE html>
@@ -30,12 +29,12 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">ten nguoi dung</th>
-                        <th scope="col">email</th>
-                        <th scope="col">manga name</th>
-                        <th scope="col">content report</th>
-                        <th scope="col">date</th>
-                        <th scope="col">action</th>
+                        <th scope="col">name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Manga name</th>
+                        <th scope="col">Content report</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,13 +50,13 @@
                                 <%= report.userID?.email %>
                             </td>
                             <td>
-                                <%= report.mangaID.name%>
+                                <%= report.mangaID?.name%>
                             </td>
                             <td>
-                                <%= report.content%>
+                                <%= report?.content%>
                             </td>
                             <td>
-                                <%= report.createdAt.toLocaleString()%>
+                                <%= report?.createdAt.toLocaleString()%>
                             </td>
                             <td>
                                 <% let classBtn=(report.status==='chưaxem' ) ? 'danger' : 'success' %>

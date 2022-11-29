@@ -2,11 +2,11 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">name</th>
-            <th scope="col">avatar</th>
-            <th scope="col">category</th>
-            <th scope="col">author</th>
-            <th scope="col">action</th>
+            <th scope="col">Name</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Category</th>
+            <th scope="col">Author</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -28,9 +28,9 @@
                     <%=user%>
                 </td>
                 <td>
-                    <button class="btn btn-warning" onclick="edit('<%= manga._id%>')">edit</button>
-                    <button class="btn btn-info" onclick="viewDetails('<%= manga._id%>')">view detail</button>
-                    <button class="btn btn-danger" onclick="delette('<%= manga._id%>')">delete</button>
+                    <button class="btn btn-warning" onclick="edit('<%= manga._id%>')">Edit</button>
+                    <button class="btn btn-info" onclick="viewDetails('<%= manga._id%>')">View detail</button>
+                    <button class="btn btn-danger" onclick="delette('<%= manga._id%>')">Delete</button>
                 </td>
             </tr>
             <%})%>

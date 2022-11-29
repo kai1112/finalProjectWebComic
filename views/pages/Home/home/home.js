@@ -19,13 +19,19 @@ click_to_flex('.toggle_menu_mobile', '.menu_mobile_content', 'height-fit')
 click_to_flex('.toggle-user-feature', '.user-feature', 'hidden')
 click_to_flex('.toggle-noti-feature', '.noti-list', 'hidden')
 
-click_out_to_hide(".user-feature", '.toggle-user-feature')
 click_out_to_hide(".noti-list", '.toggle-noti-feature')
 function click_to_flex(element_click, element_show, class_active) {
     $(`${element_click}`).click(function () {
         $(`${element_show}`).toggleClass(class_active)
     })
 }
+function type_search(type) {
+    if ($(`.field${type}`).val() != "")
+        $(`.result${type}`).css({ 'display': 'flex' })
+    else
+        $(`.result${type}`).css({ 'display': 'none' })
+}
+
 $('.search-result.resultpc').html("")
 
 

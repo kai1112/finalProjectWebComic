@@ -33,7 +33,7 @@
                         <img src='<%=manga[1]?.avatar%>' alt="">
                         <%if(chapter[1]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[1]?.length%>
+                                <div class="cover_chapter">Chap <%=chapter[1]?.length%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -44,7 +44,7 @@
                         <img src='<%=manga[2]?.avatar%>' alt="">
                         <%if(chapter[2]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[2]?.length%>
+                                <div class="cover_chapter">Chap <%=chapter[2]?.length%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -57,7 +57,7 @@
                         <img src='<%=manga[0]?.avatar%>' alt="">
                         <%if(chapter[0]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[0]?.length%>
+                                <div class="cover_chapter">Chap <%=chapter[0]?.length%>
                                 </div>
 
                                 <%}%>
@@ -71,7 +71,7 @@
                         <img src='<%=manga[3]?.avatar%>' alt="">
                         <%if(chapter[3]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[3]?.length%>
+                                <div class="cover_chapter">Chap <%=chapter[3]?.length%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -82,7 +82,7 @@
                         <img src='<%=manga[4]?.avatar%>' alt="">
                         <%if(chapter[4]=="" ){%>
                             <%}else{%>
-                                <div class="cover_chapter">Chương <%=chapter[4]?.length%>
+                                <div class="cover_chapter">Chap <%=chapter[4]?.length%>
                                 </div>
                                 <%}%>
                                     <div class="cover_shadow">
@@ -93,7 +93,7 @@
             </div>
             <%}else{}%>
                 <div class="suggest">
-                    <h2><i class="fa-solid fa-star"></i> Truyện được mua nhiều nhất</h2>
+                    <h2><i class="fa-solid fa-star"></i>The most bought Manga</h2>
                     <div class="suggest-bar">
                         <ul>
                             <% muaNhieu.map((m, index)=>{%>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="main">
-                    <h2><i class="fa-solid fa-cloud-arrow-down"></i> Truyện mới cập nhật</h2>
+                    <h2><i class="fa-solid fa-cloud-arrow-down"></i> Newly updated Manga</h2>
                     <div class="main-content">
                         <ul class="list-item">
                             <%- include('./pagination') %>

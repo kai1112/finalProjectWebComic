@@ -1,5 +1,6 @@
 const CommentModel = require('../models/comment.model')
 const UserModel = require('../models/user.model')
+const ReporCommenttModel = require('../models/reportComment.model')
 module.exports.createComment = async (req, res) => {
     try {
         // console.log(5, req.file);
@@ -95,6 +96,7 @@ module.exports.deleteComment = async (req, res) => {
             fs.unlinkSync(comment.audio);
         }
         await CommentModel.findByIdAndDelete(comment._id);
+        await ReporCommenttModel.deleteMany({ idComment: comment._id })
         res.json({
             message: "create comment successfully",
             status: 200,
