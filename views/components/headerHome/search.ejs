@@ -1,5 +1,5 @@
 <%manga?.map((m , index)=>{%>
-    <a class="search-item" href="" index="<%= index%>">
+    <a class="search-item" index="<%= index%>" onclick="viewDetails('<%=m?.slug%>')">
         <div class="search-item-img">
             <img src="<%=m?.avatar%>" alt="">
         </div>

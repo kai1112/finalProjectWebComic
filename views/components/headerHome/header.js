@@ -65,3 +65,8 @@ async function history() {
         console.log(e);
     }
 }
+
+function viewDetails(slug) {
+    console.log(slug);
+    // window.location.href = `/manga/${slug}`
+}
