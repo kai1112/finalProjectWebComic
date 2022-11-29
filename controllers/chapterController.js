@@ -40,6 +40,7 @@ module.exports.createChapter = async (req, res) => {
     try {
         let chapter = await ReviewChapterModel.findOne({ _id: req.params.id })
         let manga = await MangaModel.findOne({ reviewManga: chapter.mangaID })
+        console.log(manga);
         let follower = await LibraryModel.find({ mangaID: manga._id }).populate('userID')
         if (chapter.stautus === 'review') {
             await ChapterModel.create({
@@ -63,9 +64,10 @@ module.exports.createChapter = async (req, res) => {
 
 module.exports.deleteChapter = async (req, res) => {
     try {
-        const chapter = await ChapterModel.findOne({ _id: req.params.id });
+        const chapter = await ChapterModel.findOne({ _id: req.params.id }).populate('mangaID');
         if (chapter) {
             await ChapterModel.findByIdAndDelete(chapter._id);
+            await ReviewChapterModel.findOneAndUpdate({ mangaID: chapter.mangaID.reviewManga, chap: chapter.chap }, { stautus: 'review' })
             res.json({ message: "delete chapter successfully" });
         } else {
             res.json({ message: "Chapter not found" });

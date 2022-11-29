@@ -3,7 +3,8 @@ const ReviewMangaModel = require('../models/reviewManga')
 const CategoryModel = require('../models/category.model')
 const ReviewChapterModel = require('../models/reviewChapter')
 const fs = require("fs");
-const { mailCreateMangaAuthor } = require('../service/nodemail')
+const { mailCreateMangaAuthor } = require('../service/nodemail');
+const { info } = require('console');
 
 // view all manga author created  
 module.exports.viewAllMangaAuthorCreated = async (req, res) => {
@@ -38,14 +39,15 @@ module.exports.createMangaAuthor = async (req, res) => {
   try {
     // const cookies = req.cookies;
     // let user = await UserModel.findOne({ token: cookies.user })
-    console.log(44, req.user);
+    // console.log(44, req.user);
     let user = req.user
-    console.log(44, user.status);
+    // console.log(44, user.status);
     if (user.status === 'active') {
       // console.log(41, req.files['backgroud_avatar']);
       let category = []
       let categoryID = req.body.categoryID.split(',')
       let categoryName = req.body.categoryName.split(',')
+      console.log(req.body.name);
       const newManga = await ReviewMangaModel.findOne({ name: req.body.name });
       // console.log(categoryName);
       for (let i = 0; i < categoryName.length; i++) {
@@ -54,30 +56,52 @@ module.exports.createMangaAuthor = async (req, res) => {
       // console.log(41, category);
       if (newManga) {
         console.log({ message: 'manga already exists' });
-      } else {
-        let newManga = await ReviewMangaModel.create({
-          avatar: "/" + req.files['avatar'][0].path,
-          backgroud_avatar: "/" + req.files['backgroud_avatar'][0].path,
-          name: req.body.name,
-          category: category,
-          author: user._id,
-          description: req.body.description,
-          price: req.body.price
+        res.json({
+          message: "manga already exists",
+          status: 404,
+          err: false,
         });
-        console.log(71, newManga);
-        await mailCreateMangaAuthor(user, newManga)
+      } else {
+        console.log(req.files['avatar'] == undefined);
+        if (req.files['avatar'] == undefined) {
+          res.json({
+            message: "manga has no avatar",
+            status: 404,
+            err: false,
+          });
+        } else if (req.files['backgroud_avatar'] == undefined) {
+          res.json({
+            message: "manga has no backgroud-avatar",
+            status: 404,
+            err: false,
+          });
+        } else {
+          let newManga = await ReviewMangaModel.create({
+            avatar: "/" + req.files['avatar'][0].path,
+            backgroud_avatar: "/" + req.files['backgroud_avatar'][0].path,
+            name: req.body.name,
+            category: category,
+            author: user._id,
+            description: req.body.description,
+            price: req.body.price
+          });
+          console.log(71, newManga);
+          await mailCreateMangaAuthor(user, newManga)
+          res.json({
+            message: "create manga success",
+            status: 200,
+            err: false,
+          });
+        }
       }
+
     } else {
       console.log('The author is being banned for not having permission to create stories')
     }
 
     // console.log(68, subject);
     // console.log(70, 'aa');
-    res.json({
-      message: "create manga success",
-      status: 200,
-      err: false,
-    });
+
   } catch (e) {
     // res.json(e)
     console.log(76, e)

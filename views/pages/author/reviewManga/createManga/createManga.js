@@ -60,8 +60,11 @@ async function createManga() {
                 contentType: false,
             });
             if (data.status == 200) {
-                alert("create successful");
+                alert(data.message);
                 window.location.href = `/reviewManga/viewAllManga`;
+            } else {
+                alert(data.message);
+
             }
         } else {
             alert("you need to enter name greater than 5 characters");

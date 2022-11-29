@@ -46,25 +46,25 @@
                                 <%=index+1 %>
                             </th>
                             <td>
-                                <%= c.userID.username %>
+                                <%= c?.userID?.username %>
                             </td>
                             <td>
-                                <%= c.userID.email %>
+                                <%= c?.userID?.email %>
                             </td>
                             <td>
-                                <%= c.title%>
+                                <%= c?.title%>
                             </td>
                             <td>
-                                <%= c.reaction.length%>
+                                <%= c?.reaction?.length%>
                             </td>
                             <td>
-                                <%= c.createdAt.toLocaleString()%>
+                                <%= c?.createdAt.toLocaleString()%>
                             </td>
                             <td>
                                 <input style="width: 45%;display:inline" class="form-control" type="number"
                                     id="money<%=index  %>" name="money" placeholder="nhap so tien muon cong">
                                 <button class="btn btn-dark"
-                                    onclick="giftpoints('<%= c.userID._id %>','<%= index %>')">Plus money</button>
+                                    onclick="giftpoints('<%= c?.userID?._id %>','<%= index %>')">Plus money</button>
                             </td>
                         </tr>
                         <%})%>
