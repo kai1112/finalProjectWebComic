@@ -53,7 +53,7 @@ module.exports.createChapter = async (req, res) => {
             await noticeEmailNewChapter(follower, chapter1, manga)
             await ReviewChapterModel.updateOne({ _id: req.params.id }, { stautus: 'posted' })
         } else {
-            console.log(12, 'manga da duoc post');
+            console.log(12, 'manga has been posted');
         }
         res.json({ status: 200 })
     } catch (err) {
@@ -93,7 +93,7 @@ module.exports.viewDetailChapter = async (req, res) => {
         let total = allChapter.length;
         res.render('pages/admin/manageChapter/viewDetailChapter/viewDetailChapter', { allChapter, listChapter, total: Math.ceil(total / 1) })
     } catch (err) {
-        res.json({ message: "loix" });
+        res.json({ message: "error" });
     }
 }
 
@@ -106,7 +106,7 @@ module.exports.viewDetailChapterRivew = async (req, res) => {
         let total = allChapter.length;
         res.render('pages/admin/viewChapterAuthorPost/viewDetailChapter/viewDetailChapter', { allChapter, chapter, total: Math.ceil(total / 1) })
     } catch (err) {
-        res.json({ message: "loix" });
+        res.json({ message: "error" });
     }
 }
 

@@ -66,7 +66,7 @@ module.exports.register = async (req, res) => {
     if (user) {
       res.json({
         status: 400,
-        message: 'email da ton tai',
+        message: 'Email already exists',
       })
     } else {
       const password = await bcrypt.hash(req.body.password, 10);

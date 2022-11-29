@@ -14,7 +14,7 @@ module.exports.createReport = async (req, res) => {
             })
             res.json({ status: 200, data: report })
         } else {
-            console.log('magna khong ton tai');
+            console.log('manga does not exist');
         }
     } catch (e) {
         console.log(e);
@@ -37,7 +37,7 @@ module.exports.updateReport = async (req, res) => {
     try {
         let report = await ReportModel.findById(req.body.id)
         if (report) {
-            await ReportModel.updateOne({ _id: req.body.id }, { status: "đãxem" })
+            await ReportModel.updateOne({ _id: req.body.id }, { status: "watched" })
         }
         res.json({ status: 200, message: 'Successfully' })
     } catch (e) {

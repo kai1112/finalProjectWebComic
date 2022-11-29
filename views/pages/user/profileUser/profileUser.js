@@ -153,7 +153,7 @@ async function ChangePassword() {
     let oldPass = $('#oldPassword').val()
     let newPass = $('#newPassword').val()
     if (!oldPass || !newPass) {
-        return alert('k dc bo trong')
+        return alert('not be empty')
     }
     let res = await $.ajax({
         type: "PATCH",

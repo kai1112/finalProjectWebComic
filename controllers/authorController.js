@@ -13,7 +13,7 @@ module.exports.viewProfile = async (req, res) => {
     if (user) {
       res.render('pages/author/profileAuthor/profileAuthor', { user })
     } else {
-      console.log('user chuwa dang nhap');
+      console.log('User is not logged in');
     }
   } catch (err) {
     console.log(err);
@@ -73,7 +73,7 @@ module.exports.ChangeUserEmail = async (req, res) => {
   try {
     let findByEmail = await UserModel.find({ email: newEmail })
     if (findByEmail.length)
-      return res.json({ mess: 'Email da ton tai' })
+      return res.json({ mess: 'Email already exits' })
     await UserModel.updateOne({ _id: userId }, { email: newEmail })
     res.json({ status: 200 })
   } catch (error) {
@@ -91,7 +91,7 @@ module.exports.ChangeUserPassword = async (req, res) => {
       findUser[0].password
     );
     if (!checkPassword)
-      return res.json({ mess: 'Nhap sai password' })
+      return res.json({ mess: 'password incorect' })
     const password = await bcrypt.hash(newPass, 10);
     await UserModel.updateOne({ _id: userId }, { password })
     res.json({ mess: 'success' })
@@ -136,7 +136,7 @@ module.exports.createAuthor = async (req, res) => {
         status: 200
       })
     } else {
-      res.json('author da ton tai')
+      res.json('author already exists')
     }
   } catch (err) {
     console.log(err);
@@ -191,7 +191,7 @@ module.exports.banAuthor = async (req, res) => {
     }
 
     if (!user) {
-      res.json('author khong ton tai')
+      res.json('author does not exist')
     } else {
       await UserModel.findOneAndUpdate({ _id: req.body.id }, { status: status })
     }
@@ -218,7 +218,7 @@ module.exports.giftPointAuthor = async (req, res) => {
     res.json({ status: 200, message: 'success' })
 
   } catch (e) {
-    res.json({ message: 'Error tang diem cho user' });
+    res.json({ message: 'error adding money to user' });
   }
 }
 

@@ -11,7 +11,7 @@ module.exports.viewProfile = async (req, res) => {
     if (user) {
       res.render('pages/admin/profileAdmin/profileAdmin', { user })
     } else {
-      res.json('user chuwa dang nhap');
+      res.json('user do not login');
     }
   } catch (err) {
     res.json(err);
@@ -71,7 +71,7 @@ module.exports.ChangeUserEmail = async (req, res) => {
   try {
     let findByEmail = await UserModel.find({ email: newEmail })
     if (findByEmail.length)
-      return res.json({ mess: 'Email da ton tai' })
+      return res.json({ mess: 'Email already' })
     await UserModel.updateOne({ _id: userId }, { email: newEmail })
     res.json({ mess: 'success' })
   } catch (error) {
@@ -89,7 +89,7 @@ module.exports.ChangeUserPassword = async (req, res) => {
       findUser[0].password
     );
     if (!checkPassword)
-      return res.json({ mess: 'Nhap sai password' })
+      return res.json({ mess: 'password incorect' })
     const password = await bcrypt.hash(newPass, 10);
     await UserModel.updateOne({ _id: userId }, { password })
     res.json({ mess: 'success' })

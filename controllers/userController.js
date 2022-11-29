@@ -22,7 +22,7 @@ module.exports.viewProfile = async (req, res) => {
     // console.log(17, a.cookie);
     const userProfile = await UserModel.findOne({ token: cookies.user })
     if (!a.user) {
-      console.log('user chuwa dang nhap');
+      console.log('User is not logged in');
     } else {
       res.render('pages/user/profileUser/profileUser', { userDetail: userDetail, user: a.user, userProfile, manga, category: category })
     }
@@ -83,7 +83,7 @@ module.exports.getPaginationUser = async (req, res) => {
   try {
     let listUsers = await UserModel.find().skip(req.query.limit * (req.query.page - 1)).limit(req.query.limit);
     if (!listUsers) {
-      res.json('khong co user ton tai')
+      res.json('user does not exist')
     } else {
       res.render('pages/admin/manageUser/viewAllUser/viewAllUserEjs/paginationUser', { listUsers })
     }
@@ -108,7 +108,7 @@ module.exports.banUser = async (req, res) => {
     }
 
     if (!user) {
-      res.json('user khong ton tai')
+      res.json('user does not exist')
     } else {
       await UserModel.findOneAndUpdate({ _id: req.body.id }, { status: status })
     }
@@ -142,7 +142,7 @@ module.exports.giftPointUser = async (req, res) => {
     res.json({ status: 200, message: 'success' })
 
   } catch (e) {
-    res.json({ message: 'Error tang diem cho user' });
+    res.json({ message: 'error adding money to user' });
   }
 }
 // tru diem cho  user neu cong nham
@@ -165,7 +165,7 @@ module.exports.revomePointUser = async (req, res) => {
     res.json({ status: 200, message: 'success' })
 
   } catch (e) {
-    res.json({ message: 'Error tang diem cho user' });
+    res.json({ message: 'error adding money to user' });
   }
 }
 // find user by name

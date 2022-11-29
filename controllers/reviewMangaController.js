@@ -53,7 +53,7 @@ module.exports.createMangaAuthor = async (req, res) => {
       }
       // console.log(41, category);
       if (newManga) {
-        console.log({ message: 'manga da ton tai' });
+        console.log({ message: 'manga already exists' });
       } else {
         let newManga = await ReviewMangaModel.create({
           avatar: "/" + req.files['avatar'][0].path,
@@ -68,7 +68,7 @@ module.exports.createMangaAuthor = async (req, res) => {
         await mailCreateMangaAuthor(user, newManga)
       }
     } else {
-      console.log('user nay dang bi ban khong cos quyen create manga')
+      console.log('The author is being banned for not having permission to create stories')
     }
 
     // console.log(68, subject);
@@ -94,7 +94,7 @@ module.exports.viewDetails = async (req, res) => {
     const chapter = await ReviewChapterModel.find({ mangaID: req.params.id });
     // console.log(71, chapter);
     if (!manga) {
-      res.json("ko co manga nao");
+      res.json("no manga");
     } else {
       res.render("pages/author/reviewManga/viewDetails/viewDetails", {
         manga,
@@ -142,7 +142,7 @@ module.exports.editManga = async (req, res) => {
     }
 
     if (!manga) {
-      res.json({ message: "manga khong ton tai" });
+      res.json({ message: "manga doesn't exist" });
     } else {
       await ReviewMangaModel.findOneAndUpdate(
         {
@@ -160,7 +160,7 @@ module.exports.editManga = async (req, res) => {
       });
     }
   } catch (err) {
-    res.json({ message: "loi 3" });
+    res.json({ message: "error" });
   }
 };
 

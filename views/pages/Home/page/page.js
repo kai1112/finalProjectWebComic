@@ -100,7 +100,7 @@ async function viewChapter(chap, price, monney, checked) {
 
     try {
         if (price > 0 && !monney) {
-            if (confirm('ban can dang nhap de su dung tinh nang nay')) {
+            if (confirm('You need to login to use this feature')) {
                 localStorage.setItem("href", `/manga/${slug}`);
                 window.location.href = '/auth/viewLogin'
             }
@@ -109,11 +109,11 @@ async function viewChapter(chap, price, monney, checked) {
                 //console.log(69);
                 window.location.href = `/manga/${slug}/${chap}`
             } else if (monney < price) {
-                alert('ban chua du tien de mua truyen')
+                alert('you donot have enough money to buy the manga')
             } else {
-                if (confirm('ban co muon mua chuyen khong')) {
+                if (confirm('Do you want to buy the manga?')) {
                     window.location.href = `/manga/${slug}/${chap}`
-                    alert('mua truyen thanh cong')
+                    alert('successfully purchase')
                 }
             }
         } else {
@@ -135,7 +135,7 @@ async function followManga(id) {
             alert(data.message)
             window.location.reload()
         } else {
-            if (confirm('ban can dang nhap de dung tinh nabg nay')) {
+            if (confirm('You need to login to use this feature')) {
                 localStorage.setItem("href", `/manga/${slug}`);
                 window.location.href = '/auth/viewLogin'
             }
@@ -150,7 +150,7 @@ async function readFirst(chap, price, monney, checked) {
     let slug = window.location.href.split('/')[4]
     try {
         if (price > 0 && !monney) {
-            if (confirm('ban can dang nhap de su dung tinh nang nay')) {
+            if (confirm('You need to login to use this feature')) {
                 localStorage.setItem("href", `/manga/${slug}`);
                 window.location.href = '/auth/viewLogin'
             }
@@ -159,11 +159,11 @@ async function readFirst(chap, price, monney, checked) {
                 //console.log(69);
                 window.location.href = `/manga/${slug}/${chap}`
             } else if (monney < price) {
-                alert('ban chua du tien de mua truyen')
+                alert('you donot have enough money to buy the manga')
             } else {
-                if (confirm('ban co muon mua chuyen khong')) {
+                if (confirm('Do you want to buy the manga?')) {
                     window.location.href = `/manga/${slug}/${chap}`
-                    alert('mua truyen thanh cong')
+                    alert('successfully purchase')
                 }
             }
         } else {
@@ -200,7 +200,7 @@ async function comment(user) {
     try {
         if (user) {
             if (title.includes('vl', 'lol', 'cho', 'dm')) {
-                alert('cmt co ky tu khong hop le')
+                alert('Comments without characters are not valid')
             } {
                 let data = await $.ajax({
                     type: "POST",
@@ -218,7 +218,7 @@ async function comment(user) {
                 }
             }
         } else {
-            alert("ban can dang nhap de su dung tinh nang nay")
+            alert("You need to login to use this feature")
             localStorage.setItem("href", `/manga/${slug}`);
             window.location.href = "/auth/viewLogin"
         }
@@ -247,7 +247,7 @@ async function like(id) {
 async function mangaLike(id, userID) {
     try {
         if (userID === "") {
-            if (confirm('ban can dang nhap de su dung tinh nang nay')) {
+            if (confirm('You need to login to use this feature')) {
                 localStorage.setItem("href", `/manga/${slug}`);
                 window.location.href = '/auth/viewLogin';
             }
@@ -335,7 +335,7 @@ async function deleteComment(id, userID, userIDD) {
                 window.location.reload();
             }
         } else {
-            alert('ban khong phai chu nhan comment')
+            alert('you are not the owner of this comment')
         }
 
     } catch (e) {

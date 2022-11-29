@@ -6,7 +6,7 @@ const { header } = require('../service/headerData')
 module.exports.createFollow = async (req, res) => {
     try {
         if (req.user._id === null) {
-            res.json({ message: 'ban chua dang nhap' })
+            res.json({ message: 'You are not logged in' })
         } else {
             let followed = await Follow.findOne({ userID: req.user._id, mangaID: req.body.id })
             if (followed) {

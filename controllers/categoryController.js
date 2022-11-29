@@ -21,7 +21,7 @@ module.exports.createCategory = async (req, res) => {
         // console.log(!category.length);
         if (category.length) {
             // console.log(20, req.body);
-            console.log('name category da ton tai')
+            console.log('name category already exists')
         } else {
             await CategoryModel.create({
                 name: req.body.category,
@@ -42,7 +42,7 @@ module.exports.editCategory = async (req, res) => {
 
         let category = await CategoryModel.findOne({ id: req.params.id })
         if (!category) {
-            res.json('category khong ton tai')
+            res.json('category does not exist')
         } else {
             await CategoryModel.updateOne(
                 { _id: category._id },

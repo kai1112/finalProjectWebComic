@@ -19,7 +19,7 @@ async function edichapter(id, status) {
   try {
     console.log(status);
     if (status === 'posted') {
-      alert('ban k the edit manga nay')
+      alert('you ca not edit this manga')
     } else {
       window.location.href = `/chapter/editChapterAuthor/${id}`;
     }

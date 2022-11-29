@@ -67,7 +67,7 @@ async function viewChapter1(chap, slug, price, monney) {
         console.log(data.data == "true");
 
         if (price > 0 && !monney) {
-            if (confirm('ban can dang nhap de su dung tinh nang nay')) {
+            if (confirm('You need to login to use this feature')) {
                 localStorage.setItem("href", `/manga/${slug}`);
                 window.location.href = '/auth/viewLogin'
             }
@@ -76,11 +76,11 @@ async function viewChapter1(chap, slug, price, monney) {
                 //console.log(69);
                 window.location.href = `/manga/${slug}/${chap}`
             } else if (monney < price) {
-                alert('ban chua du tien de mua truyen')
+                alert('you donot have enough money to buy manga')
             } else {
-                if (confirm('ban co muon mua chuyen khong')) {
+                if (confirm('Do you want to buy the manga?')) {
                     window.location.href = `/manga/${slug}/${chap}`
-                    alert('mua truyen thanh cong')
+                    alert('successfully purchase')
                 }
             }
         } else {

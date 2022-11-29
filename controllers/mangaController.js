@@ -217,7 +217,7 @@ module.exports.PaginationManga = async (req, res) => {
         if (allManga) {
             res.render('pages/admin/manageManga/viewAllManga/viewAllMangaEjs/paginationManga', { allManga })
         } else {
-            res.json('khong co manga ton tai')
+            res.json('manga does not exist')
         }
     } catch (e) {
         console.log({ message: 'Error getting pagination manga' });
@@ -240,7 +240,7 @@ module.exports.viewDetailManga = async (req, res) => {
         // console.log(manga);
         const chapter = await ChapterModel.find({ mangaID: req.params.id });
         if (!manga) {
-            res.json("ko co manga nao");
+            res.json("no manga");
         } else {
             res.render("pages/admin/manageManga/viewDetailManga/viewDetailManga", {
                 manga,
@@ -339,7 +339,7 @@ module.exports.userViewMangaDetail = async (req, res) => {
                 comment = await CommentModel.find({ mangaID: mangaDetail.slug, userID: userDetails.id })
                 let history = await HistoryModel.findOne({ mangaID: mangaDetail.id, userID: userDetails._id })
                 if (history) {
-                    console.log('truyen da dc them vao history');
+                    console.log('story has been added to history');
                 } else {
                     await HistoryModel.create({
                         mangaID: mangaDetail.id,

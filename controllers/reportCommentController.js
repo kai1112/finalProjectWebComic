@@ -12,7 +12,7 @@ module.exports.createReportComment = async (req, res) => {
             })
             res.json({ status: 200 })
         } else {
-            console.log('user khong ton tai');
+            console.log('user does not exist');
         }
     } catch (e) {
         console.log(e);

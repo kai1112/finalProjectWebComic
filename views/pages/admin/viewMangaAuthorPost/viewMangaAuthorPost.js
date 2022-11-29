@@ -22,7 +22,7 @@ async function edit(id, status) {
     try {
         console.log(status);
         if (status === 'posted') {
-            alert('ban k the edit manga nay')
+            alert('you canot edit this manga')
         } else {
             window.location.href = `/manga/editMangaAuthor/${id}`
         }

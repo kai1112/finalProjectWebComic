@@ -71,7 +71,7 @@ function type_search(type) {
 async function prev(chap) {
     let id = window.location.href.split('/')[4]
     if (chap == 1) {
-        alert('day la chap dau tien k the lui tiep')
+        alert('This is the first page you canot go back')
     } else {
         // console.log(chap - 1);
         window.location.href = `/manga/${id}/${chap - 1}`
@@ -85,7 +85,7 @@ async function next(chap, length) {
     let id = window.location.href.split('/')[4]
     // console.log(+chap + 1);
     if (chap === length) {
-        alert('day la cuoi cung  k the tien tiep')
+        alert('this is the last page canot go forward')
     } else {
         window.location.href = `/manga/${id}/${+ chap + 1}`
     }

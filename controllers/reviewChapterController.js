@@ -34,7 +34,7 @@ module.exports.createChapter = async (req, res) => {
         err: false,
       });
     } else {
-      res.json('author khong co quyen tao chapter do dang bi ban')
+      res.json('author does not have permission to create chapters when banned')
     }
   } catch (err) {
     res.json({ message: "loi" });
@@ -102,7 +102,7 @@ module.exports.getChapter = async (req, res) => {
     let total = allChapter.length;
     res.render('pages/author/reviewChapter/viewDetailChapter/viewDetailChapter', { allChapter, listChapter, total: Math.ceil(total / 1) })
   } catch (err) {
-    res.json({ message: "loix" });
+    res.json({ message: "error" });
   }
 };
 
