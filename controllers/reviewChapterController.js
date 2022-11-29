@@ -57,8 +57,9 @@ module.exports.editChapter = async (req, res) => {
     if (!chapter) {
       res.json({ message: "Chapter not found" });
     } else {
-      await ReviewChapterModel.updateOne(req.body);
-      res.json({ message: "Chapter update successfully" });
+      // console.log(req.body);
+      await ReviewChapterModel.findOneAndUpdate({ _id: chapter.id }, { title: req.body.title, content: req.body.content });
+      res.json({ status: 200, message: "Chapter update successfully" });
     }
   } catch (err) {
     res.json({ err });
