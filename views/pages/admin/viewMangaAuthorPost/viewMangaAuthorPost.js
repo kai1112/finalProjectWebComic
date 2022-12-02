@@ -35,6 +35,20 @@ async function viewDetails(id) {
     window.location.href = `/manga/viewDetailsAuthor/${id}`
 }
 
+
+async function pagination(page, limit) {
+    try {
+        const data = await $.ajax({
+            url: `/manga/viewPaginationMangaAuthor?page=${page}&limit=${limit}`,
+            type: "GET",
+        });
+        $(".pagination").html(data);
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+
 // async function searchMangaByAuthor(name) {
 //     try {
 //         console.log(name);
