@@ -45,7 +45,7 @@ function viewDetails(slug) {
 
 async function nextPages(page) {
     try {
-        let limit = 10;
+        let limit = 20;
         let data = await $.ajax({
             url: `/manga/pagination?page=${page}&limit=${limit}`,
             type: 'GET',
