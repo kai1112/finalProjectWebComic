@@ -22,31 +22,92 @@
     </li>
     <%})%>
         <div class="see-more">
-            <%if(total==1){%>
-                <button class="pagination-btn" onclick="nextPages('<%=1%>')">
-                    <%=1%>
-                </button>
-                <%}else{ if(1*page +3> total -1){%>
-                    </button> <button class="pagination-btn" onclick="nextPages('<%=1*total -3%>')">
-                        <%=1*total-3%>
-                            <button class="pagination-btn" onclick="nextPages('<%=1*total-2%>')">
-                                <%=1*total-2%>
-                            </button> <button class="pagination-btn" onclick="nextPages('<%=1*total-1%>')">
-                                <%=1*total-1%>
+            <%if(total<=5){ for(let i=1; i <=total; i++){%>
+                <%if(page==i){%>
+                    <button class="pagination-btn" style="background: #f18121;" onclick="nextPages('<%=i%>')">
+                        <%=i%>
+                    </button>
+                    <%}else{%>
+                        <button class="pagination-btn" onclick="nextPages('<%=i%>')">
+                            <%=i%>
+                        </button>
+                        <%}%>
 
-                                    <%}else{%>
-                            </button> <button class="pagination-btn" onclick="nextPages('<%=1*page+1%>')">
-                                <%=1*page + 1%>
-
-                            </button>
-                            <button class="pagination-btn" onclick="nextPages('<%=1*page+2%>')">
-                                <%=1*page + 2%>
-                            </button>
                             <%}%>
+                                <%}else if(page==1 && total> 5 ){%>
+                                    <button class="pagination-btn" style="background: #f18121;"
+                                        onclick="nextPages('<%=page%>')">
+                                        <%=1%>
+                                    </button>
+                                    <button class="pagination-btn" onclick="nextPages('<%=1*page+1%>')">
+                                        <%=1*page+1%>
+                                    </button> <button class="pagination-btn" onclick="nextPages('<%=1*page+2%>')">
+                                        <%=1*page+2%>
+                                    </button>
+                                    <button class="pagination-btn" onclick="nextPages('<%=1*total%>')">
+                                        <%=1*total%>
+                                    </button>
+                                    <%}else if(page==total && total> 5) {%>
+                                        <button class="pagination-btn" onclick="nextPages('<%=1%>')">
+                                            <%=1%>
+                                        </button>
+                                        <button class="pagination-btn" onclick="nextPages('<%=1*total-2%>')">
+                                            <%=1*total -2%>
+                                        </button> <button class="pagination-btn" onclick="nextPages('<%=1*total-1%>')">
+                                            <%=1*total -1%>
+                                        </button>
+                                        <button class="pagination-btn" style="background: #f18121;"
+                                            onclick="nextPages('<%=1*total%>')">
+                                            <%=1*total%>
+                                        </button>
+                                        <%}else if(page==2 && total> 5){%>
+                                            <button class="pagination-btn" onclick="nextPages('<%=1%>')">
+                                                <%=1%>
+                                            </button>
+                                            <button class="pagination-btn" style="background: #f18121;"
+                                                onclick="nextPages('<%=1*page%>')">
+                                                <%=1*page%>
+                                            </button> <button class="pagination-btn"
+                                                onclick="nextPages('<%=1*page+1%>')">
+                                                <%=1*page+1%>
+                                            </button>
+                                            <button class="pagination-btn" onclick="nextPages('<%=1*total%>')">
+                                                <%=1*total%>
+                                            </button>
 
-                                <button class="pagination-btn" onclick="nextPages('<%=1*total%>')">
-                                    <%=1*total%>
-                                </button>
-                                <%}%>
+                                            <%}else if(page==total-1 && total>5){%>
+                                                <button class="pagination-btn" onclick="nextPages('<%=1%>')">
+                                                    <%=1%>
+                                                </button>
+                                                <button class="pagination-btn" onclick="nextPages('<%=1*page-1%>')">
+                                                    <%=1*page -1%>
+                                                </button> <button class="pagination-btn" style="background: #f18121;"
+                                                    onclick="nextPages('<%=1*page%>')">
+                                                    <%=1*page%>
+                                                </button>
+                                                <button class="pagination-btn" onclick="nextPages('<%=1*total%>')">
+                                                    <%=1*total%>
+                                                </button>
+                                                <%}else{%>
+                                                    <button class="pagination-btn" onclick="nextPages('<%=1%>')">
+                                                        <%=1%>
+                                                    </button>
+                                                    <button class="pagination-btn" onclick="nextPages('<%=1*page-1%>')">
+                                                        <%=1*page-1%>
+                                                    </button>
+                                                    <button class="pagination-btn" style="background: #f18121;"
+                                                        onclick="nextPages('<%=1*page%>')">
+                                                        <%=1*page%>
+                                                    </button>
+                                                    <button class="pagination-btn" onclick="nextPages('<%=1*page+1%>')">
+                                                        <%=1*page+1%>
+                                                    </button>
+                                                    <button class="pagination-btn" onclick="nextPages('<%=1*total%>')">
+                                                        <%=1*total%>
+                                                    </button>
+                                                    <%}%>
+
+
+
 
         </div>
