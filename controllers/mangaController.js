@@ -63,7 +63,6 @@ module.exports.viewCreateManga = async (req, res) => {
             listAuthor.push(author);
         }
         // console.log(47, listAuthor);
-
         let total = allManga.length
         if (allManga) {
             res.render('pages/admin/viewMangaAuthorPost/viewMangaAuthorPostEjs/viewMangaAuthorPost', { listAuthor, allManga, listManga, total: Math.ceil(total / 10) })
@@ -76,19 +75,21 @@ module.exports.viewCreateManga = async (req, res) => {
 module.exports.viewPaginationManga = async (req, res) => {
     try {
 
-        let allManga = await ReviewMangaModel.find().skip(req.query.limit * (req.query.page - 1)).limit(req.query.limit);
+        let listManga = await ReviewMangaModel.find().skip(req.query.limit * (req.query.page - 1)).limit(req.query.limit);
         // console.log(80, req.query.limit * (req.query.page - 1))
 
         let listAuthor = []
 
-        for (let i = 0; i < allManga.length; i++) {
-            let author = await UserModel.find({ _id: allManga[i].author })
+        for (let i = 0; i < listManga.length; i++) {
+            let author = await UserModel.findOne({ _id: listManga[i].author })
             listAuthor.push(author)
         }
-        let total = allManga.length
 
-        if (allManga) {
-            res.render('pages/admin/viewMangaAuthorPost/viewMangaAuthorPostEjs/viewpaginationMangaAuthorPost', { total, listAuthor, allManga })
+
+        let total = listManga.length
+
+        if (listManga) {
+            res.render('pages/admin/viewMangaAuthorPost/viewMangaAuthorPostEjs/viewpaginationMangaAuthorPost', { total, listAuthor, listManga })
         } else {
             res.json('khong co manga ton tai')
         }
@@ -366,7 +367,7 @@ module.exports.userViewPagination = async (req, res) => {
         let allManga = await MangaModel.find();
 
         // console.log(368, req.query.limit * (req.query.page - 1));
-        let total = Math.ceil(allManga.length / 20)
+        let total = Math.ceil(allManga.length / 10)
         let chapter = []
         for (let i = 0; i < listManga.length; i++) {
             let chap = await ChapterModel.find({ mangaID: listManga[i]._id }).sort({ chap: 'asc' })
@@ -414,10 +415,10 @@ module.exports.HomePage = async (req, res) => {
         }
         // console.log(393, comment);
 
-        let listManga = await MangaModel.find().sort({ views: 'desc' }).limit(20);
+        let listManga = await MangaModel.find().sort({ views: 'desc' }).limit(10);
         // console.log(418, listManga);
         let allManga = await MangaModel.find()
-        let total = Math.ceil(allManga.length / 20)
+        let total = Math.ceil(allManga.length / 10)
         let chapter = []
         for (let i = 0; i < manga.length; i++) {
             let chap = await ChapterModel.find({ mangaID: manga[i].id }).sort({ chap: 'asc' })
