@@ -134,7 +134,17 @@
                                                         alt=""></a>
                                                 <div class="showComment__info--nameAndTime">
                                                     <a>
-                                                        <%=m?.userID?.username%>
+                                                        <%if(!m?.mangaID){%>
+                                                            <p onclick="viewDetails('<%=m?.chapterID?.mangaID.slug%>')">
+                                                                <%=m?.chapterID?.mangaID.slug%> chap
+                                                                    <%=m?.chapterID?.chap%>
+                                                            </p>
+                                                            <%}else{%>
+                                                                <p onclick="viewDetails('<%=m?.mangaID%>')">
+                                                                    <%=m?.mangaID%>
+                                                                </p>
+                                                                <%}%>
+                                                                    <%=m?.userID?.username%>
                                                     </a>
                                                     <!-- <p>Publish</p> -->
                                                 </div>
@@ -142,7 +152,8 @@
                                             <div class="showComment__content">
                                                 <%=m?.title%>
                                                     <p>
-                                                        <%if(m?.audio.split(".").includes("jpg", "png" )){%>
+                                                        <%if(m?.audio.split(".").includes("jpg", "png" , "image/webp"
+                                                            )){%>
                                                             <img src="<%= m?.audio  %> " alt="" width="100px">
                                                             <%}else if(m?.audio.split(".").includes("m4a",'mp3','WMA'
                                                                 )){%>
@@ -154,7 +165,7 @@
                                                                     <%}%>
                                                     </p>
                                             </div>
-                                            <i class="fa-solid fa-thumbs-up like-total">
+                                            <i class="fa-solid fa-thumbs-up like-total" onclick="like('<%=m?._id%>')">
                                                 <%=m.reaction?.length%>
                                             </i>
                                             <br>

@@ -1,15 +1,17 @@
 const MangaModel = require('../models/manga.model');
 const ReportModel = require('../models/report.model');
-
+const UserModel = require('../models/user.model');
 
 module.exports.createReport = async (req, res) => {
     try {
         let manga = await MangaModel.findOne({ slug: req.body.slug })
         let user = await UserModel.findOne({ token: req.cookies.user })
+        console.log(req.body);
+        console.log(user.id);
         if (user) {
             let report = await ReportModel.create({
-                content: req.body.content,
-                userID: req.body.userID,
+                content: req.body.title,
+                userID: req.body.id,
                 mangaID: manga.id,
             })
             res.json({ status: 200, data: report })
@@ -24,7 +26,7 @@ module.exports.createReport = async (req, res) => {
 module.exports.viewAllReport = async (req, res) => {
     try {
         let reports = await ReportModel.find().populate('mangaID').populate('userID')
-        // console.log(reports);
+        console.log(reports);
         if (reports) {
             res.render('pages/admin/viewReport/viewReport', { reports })
         }

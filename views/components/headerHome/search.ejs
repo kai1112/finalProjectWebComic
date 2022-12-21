@@ -1,15 +1,34 @@
-<%manga?.map((m , index)=>{%>
-    <a class="search-item" index="<%= index%>" onclick="viewDetails('<%=m?.slug%>')">
-        <div class="search-item-img">
-            <img src="<%=m?.avatar%>" alt="">
-        </div>
-        <div class="search-item-info">
-            <b>
-                <%=m?.name%>
-            </b>
-            <p>
-                <%=m?.author?.username%>
-            </p>
-        </div>
-    </a>
-    <%})%>
+<% if(!manga){%>
+    <%manga1?.map((m , index)=>{%>
+        <a class="search-item" index="<%= index%>" onclick="viewDetails('<%=m?.slug%>')">
+            <div class="search-item-img">
+                <img src="<%=m?.avatar%>" alt="">
+            </div>
+            <div class="search-item-info">
+                <b>
+                    <%=m?.name%>
+                </b>
+                <p>
+                    <%=m?.author?.username%>
+                </p>
+            </div>
+        </a>
+        <%})%>
+            <%}else{%>
+
+                <%manga?.map((m , index)=>{%>
+                    <a class="search-item" index="<%= index%>" onclick="viewDetails('<%=m?.slug%>')">
+                        <div class="search-item-img">
+                            <img src="<%=m?.avatar%>" alt="">
+                        </div>
+                        <div class="search-item-info">
+                            <b>
+                                <%=m?.name%>
+                            </b>
+                            <p>
+                                <%=m?.author?.username%>
+                            </p>
+                        </div>
+                    </a>
+                    <%})%>
+                        <%}%>

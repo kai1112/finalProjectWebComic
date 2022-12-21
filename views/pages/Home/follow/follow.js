@@ -50,7 +50,7 @@ async function unfollow(id) {
     }
 }
 
-function viewDetails(slug) {
+function view(slug) {
     console.log(slug);
     window.location.href = `/manga/${slug}`
 }

@@ -26,7 +26,7 @@ async function mailCreateMangaAuthor(user, manga) {
                 to: `${email}`, // list of receivers
                 subject: `${subject + `by ${user.username}`}`, // Subject line
                 text: "", // plain text body
-                html: ` ${user.username} created manga with name ${manga.name} vào lúc ${date.toLocaleString()}`, // html body
+                html: ` ${user.username} created manga with name ${manga.name} vào lúc ${date}`, // html body
             }
         );
         console.log(24, 'oke');
@@ -100,8 +100,7 @@ async function noticeEmailNewChapter(users, chapter, manga) {
                 to: `${email}`, // list of receivers
                 subject: `${subject + `by ${manga.name}`}`, // Subject line
                 //${chapter.createAt.toLocalString()}
-                text: ` The story you follow has a new chapter at ${date.toLocalString()} with title ${chapter.title}`, // plain text body
-                html: "<b>Hello world?</b>", // html body
+                text: ` The story you follow has a new chapter at with title ${chapter.title}`, // plain text body
             }
         );
         console.log(107, 'oke');

@@ -1,13 +1,18 @@
 async function search() {
     let name = $('#name').val()
-    console.log(name);
+    // console.log(name);
     try {
         let data = await $.ajax({
             type: "GET",
             url: `/manga/search?name=${name}`,
         })
-        // console.log(data);
+        console.log(data.manga);
+        // if (!data.manga) {
+
         $('.search-result').html(data)
+        // } else {
+        //     $('.search-result').html(data.manga)
+        // }
     } catch (e) {
         console.log(e);
     }
@@ -68,5 +73,5 @@ async function history() {
 
 function viewDetails(slug) {
     console.log(slug);
-    // window.location.href = `/manga/${slug}`
+    window.location.href = `/manga/${slug}`
 }

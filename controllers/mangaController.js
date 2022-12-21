@@ -76,7 +76,7 @@ module.exports.viewPaginationManga = async (req, res) => {
     try {
 
         let listManga = await ReviewMangaModel.find().skip(req.query.limit * (req.query.page - 1)).limit(req.query.limit);
-        // console.log(80, req.query.limit * (req.query.page - 1))
+        // console.log(listManga)
 
         let listAuthor = []
 
@@ -360,7 +360,7 @@ module.exports.userViewMangaDetail = async (req, res) => {
 
 module.exports.userViewPagination = async (req, res) => {
     try {
-        console.log(req.query.page);
+        // console.log(req.query.page);
         let a = await header(req, res);
         let page = req.query.page;
         let listManga = await MangaModel.find().skip(req.query.limit * (req.query.page - 1)).limit(req.query.limit);
@@ -392,17 +392,36 @@ module.exports.HomePage = async (req, res) => {
         let page = 1
         let a = await header(req, res);
         let manga = await MangaModel.find().sort({ views: 'desc' }).limit(5)
-        let muaNhieu = await MangaModel.find().sort({ buyed: 'desc' }).limit(7)
-        let comment = await CommentModel.find().sort({ reaction: 'desc' }).populate("userID")
+        let muaNhieu = await MangaModel.find().sort('buyed').limit(7)
+        // console.log(muaNhieu);
+        let comment = await CommentModel.find().sort({ reaction: 'desc' }).populate("userID").populate({ path: 'chapterID', populate: { path: 'mangaID' } })
         // let Comment = [];
         // console.log(a);
         for (let i = 0; i < comment.length; i++) {
-            // console.log(i, comment.audio);
-            if (comment[i].audio == "") {
-                // console.log(392, i, comment[i].userID);
-                comment.splice(i, 1)
+            for (let j = 1; j < comment.length; j++) {
+                if (comment[i].reaction.length < comment[j].reaction.length) {
+                    let a = comment[i];
+                    comment[i] = comment[j];
+                    comment[j] = a
+                }
             }
         }
+
+        // console.log(comment.length);
+
+        for (let i = 0; i < comment.length; i++) {
+            // console.log(i, comment[i].audio == "");
+            console.log(393, comment[i].id);
+
+            if (comment[i].audio == "") {
+                // console.log(392, i, comment[i]);
+                comment.splice(i, 1)
+                i = i - 1
+                // console.log(i);
+            }
+        }
+        // console.log(394, comment[1]);
+
         for (let i = 0; i < comment.length; i++) {
             // let k = comment[i]
             for (let j = i + 1; j < comment.length; j++) {
@@ -413,7 +432,7 @@ module.exports.HomePage = async (req, res) => {
                 }
             }
         }
-        // console.log(393, comment);
+        // console.log(422, comment.length);
 
         let listManga = await MangaModel.find().sort({ views: 'desc' }).limit(20);
         // console.log(418, listManga);
@@ -481,7 +500,8 @@ module.exports.userViewChap = async (req, res) => {
                 await ChapterModel.updateOne({ _id: chapter._id }, { $inc: { views: 1 } })
                 await MangaModel.updateOne({ _id: chapter.mangaID }, { $inc: { views: 1 } })
                 await BuyedModel.create({ userID: userDetail._id, mangaID: mangaDetail._id })
-                await MangaModel.findOneAndUpdate({ _id: mangaDetail._id }, { buyed: buyed, monney: monney })
+                await MangaModel.findOneAndUpdate({ _id: mangaDetail._id }, { buyed: buyed })
+                await UserModel.findOneAndUpdate({ _id: userDetail._id }, { monney: monney })
                 res.render('pages/Home/read/read', { userDetail, chapter, allChapter, comment, total, manga, category: a.category, user: a.user, mangaDetail })
 
             } else {
@@ -522,9 +542,15 @@ module.exports.getpaginationComment = async (req, res) => {
 
 module.exports.search = async (req, res) => {
     try {
-        let manga = await MangaModel.find({ name: { $regex: req.query.name, $options: 'i' } }).populate('author');
-        // console.log(421, manga);
-        res.render('components/headerHome/search', { manga })
+        let manga, manga1
+        manga = await MangaModel.find({ name: { $regex: req.query.name, $options: 'i' } }).populate('author');
+        let author = await UserModel.findOne({ username: { $regex: req.query.name, $options: 'i' } })
+        if (author) {
+            manga1 = await MangaModel.find({ author: author.id })
+        }
+        console.log(421, manga1);
+        // res.json({ status: 200, manga: manga1 })
+        res.render('components/headerHome/search', { manga: manga1 })
     } catch (e) {
         console.log(422, e);
     }

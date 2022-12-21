@@ -91,3 +91,19 @@ async function viewChapter1(chap, slug, price, monney) {
         console.log(e);
     }
 }
+
+async function like(id) {
+    //console.log(id);
+    try {
+        let data = await $.ajax({
+            type: "POST",
+            url: '/comment/updateComment',
+            data: { id }
+        })
+        if (data.status === 200) {
+            window.location.reload();
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}

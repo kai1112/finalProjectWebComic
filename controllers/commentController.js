@@ -17,8 +17,6 @@ module.exports.createComment = async (req, res) => {
         }
         // console.log(req.body);
         if (user) {
-
-
             if (req.body.title === "" && audio === "") {
                 res.json({ status: 400 })
             } else {
@@ -90,11 +88,11 @@ module.exports.deleteComment = async (req, res) => {
     try {
         // console.log('a');
 
-        // console.log('a');
+        console.log(req.body);
         let comment = await CommentModel.findOne({ _id: req.body.id });
-        if (comment.audio) {
-            fs.unlinkSync(comment.audio);
-        }
+        // if (comment.audio) {
+        //     fs.unlinkSync(comment.audio);
+        // }
         await CommentModel.findByIdAndDelete(comment._id);
         await ReporCommenttModel.deleteMany({ idComment: comment._id })
         res.json({
@@ -109,22 +107,64 @@ module.exports.deleteComment = async (req, res) => {
 
 module.exports.viewHightComment = async (req, res) => {
     try {
-        let comment = await CommentModel.find().sort({ reaction: 'desc' }).populate("userID")
+        let comment = await CommentModel.find().sort({ reaction: 'desc' }).populate("userID").populate({ path: 'chapterID', populate: { path: 'mangaID' } })
         // let Comment = [];
+        // console.log(a);
         for (let i = 0; i < comment.length; i++) {
-            // console.log(i, comment.audio);
-            if (comment[i].audio == "") {
-                // console.log(392, i, comment[i].userID);
-                comment.splice(i, 1)
+            for (let j = 1; j < comment.length; j++) {
+                if (comment[i].reaction.length < comment[j].reaction.length) {
+                    let a = comment[i];
+                    comment[i] = comment[j];
+                    comment[j] = a
+                }
             }
         }
+
+        console.log(comment.length);
+
         for (let i = 0; i < comment.length; i++) {
+            // console.log(i, comment[i].audio == "");
+            console.log(393, comment[i].id);
+
+            if (comment[i].audio == "") {
+                // console.log(392, i, comment[i]);
+                comment.splice(i, 1)
+                i = i - 1
+                // console.log(i);
+            }
+        }
+        // console.log(394, comment[1]);
+
+        for (let i = 0; i < comment.length; i++) {
+            // let k = comment[i]
             for (let j = i + 1; j < comment.length; j++) {
+                // console.log(390, i, j);
                 if (comment[i].userID == comment[j].userID) {
+                    // console.log(391 + i, comment[i]);
                     comment.splice(j, 1)
                 }
             }
         }
+
+
+
+
+        // let comment = await CommentModel.find().sort({ reaction: 'desc' }).populate("userID")
+        // // let Comment = [];
+        // for (let i = 0; i < comment.length; i++) {
+        //     // console.log(i, comment.audio);
+        //     if (comment[i].audio == "") {
+        //         // console.log(392, i, comment[i].userID);
+        //         comment.splice(i, 1)
+        //     }
+        // }
+        // for (let i = 0; i < comment.length; i++) {
+        //     for (let j = i + 1; j < comment.length; j++) {
+        //         if (comment[i].userID == comment[j].userID) {
+        //             comment.splice(j, 1)
+        //         }
+        //     }
+        // }
         res.render('pages/admin/viewCommentHeight/viewComment', { comment })
     } catch (e) {
         console.log(e);

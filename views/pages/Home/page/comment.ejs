@@ -15,7 +15,7 @@
                 <p class="comment-content">
                     <%=c.title%>
                 </p>
-                <%if(c?.audio.split(".").includes("jpg", "png" )){%>
+                <%if(c?.audio.split(".").includes("jpg", "png" , "webp" , "image/webp" )){%>
                     <img src="<%= c?.audio  %> " alt="" width="100px" class="comment-img" />
                     <%}else if(c?.audio=="" ){%>
                         <%}else{%>

@@ -25,7 +25,7 @@ async function search() {
             url: `/manga/search?name=${name}`,
         })
         // console.log(data);
-        $('.search-result.resultpc').html(data)
+        $('.search-result').html(data.manga)
     } catch (e) {
         console.log(e);
     }

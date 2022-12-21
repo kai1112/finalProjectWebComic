@@ -211,7 +211,7 @@ async function comment(user) {
                 })
                 // console.log(data.status);
                 if (data.status == 200) {
-                    // console.log(data.message)
+                    alert(data.message)
                     window.location.reload()
                 } else {
                     alert("loi")
@@ -317,6 +317,10 @@ async function report(id) {
             type: 'post',
             data: { title, id, slug }
         })
+        if (data.status === 200) {
+            alert('successfully created')
+            window.location.reload()
+        }
     } catch (e) {
         console.log(e);
     }

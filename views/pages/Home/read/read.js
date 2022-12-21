@@ -188,3 +188,8 @@ async function search() {
         console.log(e);
     }
 }
+
+function viewDetails(slug) {
+    // console.log(slug);
+    window.location.href = `/manga/${slug}`
+}

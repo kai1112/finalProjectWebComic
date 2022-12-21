@@ -192,8 +192,6 @@ module.exports.getFindUserByNameUser = async (req, res) => {
 
 module.exports.buyed = async (req, res) => {
   try {
-    //  //  //
-
     // console.log(req.cookies);
     let userDetails = await UserModel.findOne({ token: req.cookies.user })
     let buyed = await BuyedModel.findOne({ userID: req.user._id }).populate('userID')
@@ -205,7 +203,7 @@ module.exports.buyed = async (req, res) => {
       {
         $group: {
           "_id": "$userID",
-          count: { $count: {} }
+          count: { $sum: {} }
         }
       },
       {
@@ -215,16 +213,15 @@ module.exports.buyed = async (req, res) => {
       }
     ])
     let user = await UserModel.populate(userBuyed, { path: "_id" })
-    // console.log(user);
+    // console.log(218, user);
     let manga1 = await MangaModel.find().sort({ views: 'desc' }).limit(5)
     if (buyed) {
-      for (let i = 0; i < buyed.length; i++) {
-        let manga = await MangaModel.findOne({ id: buyed.mangaID[i] })
-        if (manga) {
-          buyedManga.push(manga);
-        }
+      let manga = await BuyedModel.find({ userID: userDetails._id }).populate("mangaID")
+      if (manga) {
+        buyedManga = manga;
       }
-
+      // console.log(buyed);
+      // console.log(buyedManga);
       res.render('pages/user/buyed/buyed', { user: user, category, manga: manga1, userDetail: buyed.userID, buyed: buyedManga })
     } else {
       res.render('pages/user/buyed/buyed', { user: user, category, manga: manga1, userDetail: userDetails, buyed: buyedManga })

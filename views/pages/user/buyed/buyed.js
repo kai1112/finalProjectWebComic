@@ -27,17 +27,7 @@ function type_search(type) {
 
 $('.search-result.resultpc').html("")
 
-async function unfollow(id) {
-    try {
-        let data = await $.ajax({
-            type: 'DELETE',
-            url: `/follow/unFollow`,
-            data: id
-        })
-        if (data.status === 200) {
-            alert('unfollow success')
-        }
-    } catch (e) {
-        console.log(e);
-    }
+function view(slug) {
+    console.log(slug);
+    window.location.href = `/manga/${slug}`
 }
