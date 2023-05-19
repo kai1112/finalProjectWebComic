@@ -49,7 +49,6 @@ module.exports.createChapter = async (req, res) => {
   try {
     let chapter = await ReviewChapterModel.findOne({ _id: req.params.id });
     let manga = await MangaModel.findOne({ reviewManga: chapter.mangaID });
-    console.log(manga);
     let follower = await LibraryModel.find({ mangaID: manga._id }).populate(
       "userID"
     );
@@ -93,7 +92,7 @@ module.exports.deleteChapter = async (req, res) => {
         { mangaID: chapter.mangaID.reviewManga, chap: chapter.chap },
         { stautus: "review" }
       );
-      res.json({ message: "delete chapter successfully" });
+      res.json({ status: 200, message: "delete chapter successfully" });
     } else {
       res.json({ message: "Chapter not found" });
     }
@@ -120,7 +119,6 @@ module.exports.viewDetailChapter = async (req, res) => {
     let listChapter = await ChapterModel.find({
       mangaID: chapter.mangaID,
     }).limit(1);
-    // console.log(76, listChapter);
     let total = allChapter.length;
     res.render(
       "pages/admin/manageChapter/viewDetailChapter/viewDetailChapter",
@@ -138,7 +136,6 @@ module.exports.viewDetailChapterRivew = async (req, res) => {
       mangaID: chapter.mangaID,
     });
     // let listChapter = await ReviewChapterModel.find({ mangaID: chapter.mangaID }).limit(1);
-    // console.log(76, chapter);
     let total = allChapter.length;
     res.render(
       "pages/admin/viewChapterAuthorPost/viewDetailChapter/viewDetailChapter",
@@ -171,14 +168,12 @@ module.exports.ChangeChapterContent = async (req, res) => {
 
 module.exports.viewDetailChapterPagination = async (req, res) => {
   try {
-    // console.log(85, req.params.id);
-    // console.log(86, req.query)
     let chapter = await ChapterModel.findOne({ _id: req.params.id });
     let listChapter = await ChapterModel.find({ mangaID: chapter.mangaID })
       .skip(req.query.limit * (req.query.page - 1))
       .limit(req.query.limit);
     if (!listChapter) {
-      console.log("chapter not found");
+      res.json({ status: 404, message: "chapter not found" });
     } else {
       res.render(
         "pages/admin/manageChapter/viewDetailChapter/paginationChapter",
@@ -186,7 +181,7 @@ module.exports.viewDetailChapterPagination = async (req, res) => {
       );
     }
   } catch (e) {
-    console.log(e);
+    res.json(e);
   }
 };
 

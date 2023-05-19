@@ -667,7 +667,6 @@ module.exports.userViewChap = async (req, res) => {
 
 module.exports.getpaginationComment = async (req, res) => {
   try {
-    // console.log(391, req.query.page);
     let manga = await MangaModel.findOne({ slug: req.params.slug });
     let chapter = await ChapterModel.findOne({
       mangaID: manga.id,
@@ -683,7 +682,6 @@ module.exports.getpaginationComment = async (req, res) => {
       .sort({ reactionn: "asc" })
       .skip(req.query.limit * (req.query.page - 1))
       .limit(10);
-    console.log(509, req.query.limit * (req.query.page - 1));
     let total = Math.ceil((allComment.length + 1) / (comment.length + 1));
 
     if (chapter) {
@@ -692,7 +690,7 @@ module.exports.getpaginationComment = async (req, res) => {
       res.json("user does not exist");
     }
   } catch (e) {
-    console.log({ message: "Error getting pagination user" });
+    res.json({ message: "Error getting pagination user" });
   }
 };
 
@@ -708,11 +706,9 @@ module.exports.search = async (req, res) => {
     if (author) {
       manga1 = await MangaModel.find({ author: author.id });
     }
-    console.log(421, manga1);
-    // res.json({ status: 200, manga: manga1 })
     res.render("components/headerHome/search", { manga: manga1 });
   } catch (e) {
-    console.log(422, e);
+    res.json(e);
   }
 };
 
@@ -734,9 +730,7 @@ module.exports.updateManga = async (req, res) => {
         }
       } else {
         reaction.push(req.user.id);
-        // console.log(453, req.user.id);
       }
-      // console.log(60, reaction);
 
       await MangaModel.findOneAndUpdate({ _id: manga._id }, { like: reaction });
       res.json({
@@ -744,7 +738,7 @@ module.exports.updateManga = async (req, res) => {
         message: "like manga successfully",
       });
     } else {
-      console.log("manga not found");
+      res.json("manga not found");
     }
   } catch (err) {
     res.json(err);
@@ -770,12 +764,10 @@ module.exports.preview = async (req, res) => {
         return id === userDetail.id;
       });
       if (userID[0] === userDetail.id) {
-        // console.log(319, userID);
         checked = true;
       }
     }
 
-    // console.log(chapter);
     res.render("pages/Home/review/review", {
       userDetail,
       manga,
@@ -786,18 +778,16 @@ module.exports.preview = async (req, res) => {
       checked,
     });
   } catch (err) {
-    console.log(err);
+    res.json(err);
   }
 };
 
 module.exports.ckecked = async (req, res) => {
   try {
     let a = await header(req, res);
-    // console.log(req.params.slug);
     let mangaDetail = await MangaModel.findOne({
       slug: req.params.slug,
     }).populate("author");
-    // console.log(mangaDetail);
     let buyed = mangaDetail.buyed;
     let checked = false;
     let userDetail;
@@ -816,10 +806,9 @@ module.exports.ckecked = async (req, res) => {
         buyed.push(userDetail.id);
       }
     }
-    // console.log(checked);
     res.json({ status: 200, data: checked });
   } catch (e) {
-    console.log(e);
+    res.json(e);
   }
 };
 // search by author name
@@ -838,7 +827,6 @@ module.exports.ckecked = async (req, res) => {
 module.exports.refresh_token = async (req, res) => {
   try {
     let refresh_token = fs.readFileSync("./refresh_token.txt", "utf-8");
-    console.log(refresh_token);
     let a = await axios({
       method: "POST",
       url: process.env.REFRESH_TOKEN,
@@ -865,7 +853,6 @@ module.exports.refresh_token = async (req, res) => {
         fs.appendFile("./access_token.txt", access_token, function (err) {
           if (err) throw err;
         });
-        console.log(30, response.data);
         return {
           access_token: access_token,
           refresh_token: refresh_token,
@@ -877,11 +864,10 @@ module.exports.refresh_token = async (req, res) => {
       });
     return a;
   } catch (err) {
-    console.log(err);
+    res.json(err);
   }
 };
 // refresh_token();
-// console.log(access_token);
 module.exports.sendMessage = async (req, res) => {
   try {
     let access_token = fs.readFileSync("./access_token.txt", "utf-8");
@@ -902,14 +888,14 @@ module.exports.sendMessage = async (req, res) => {
       },
     })
       .then((response) => {
-        console.log(response);
+        res.json(response);
       })
       .catch((error) => {
         log.error(`Error Try Catch Call Method Post: ${error}`);
         return false;
       });
   } catch (err) {
-    console.log(err);
+    res.json(err);
   }
 };
 
