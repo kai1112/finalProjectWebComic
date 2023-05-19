@@ -34,7 +34,7 @@
                     <%follows.map((f)=>{%>
                         <li class="card-item">
                             <a>
-                                <img src="<%=f?.mangaID?.avatar%>" alt="" onclick="view('<%=f?.mangaID?.slug%>')">
+                                <img src="/<%=f?.mangaID?.avatar%>" alt="" onclick="view('<%=f?.mangaID?.slug%>')">
                                 <div class="more-info">
                                     <div class="unfollow" onclick="unhistory('<%=f?._id%>')"><i
                                             class="fa-solid fa-circle-xmark"></i></div>
